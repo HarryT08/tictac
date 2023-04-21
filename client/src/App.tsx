@@ -1,10 +1,8 @@
-import "./App.css";
+import { Menu } from "@/layout";
 
 function App() {
   return (
-    <>
-      <h1>Hola mundo</h1>
-    </>
+    <Menu/>
   );
 }
 
