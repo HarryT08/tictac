@@ -1,16 +1,18 @@
+import { Link } from "react-router-dom";
+
 export const ContenidoModalEstudiante = () => {
   return (
     <div className="container-cardsModal">
-      <div className="cardModal pequenios">
+      <Link to="/login/estudiantes/primaria" className="cardModal pequenios">
         <div className="overlayModal"></div>
         <div className="circleModalPequenios"></div>
         <p className="font-medium">Estudiantes peques</p>
-      </div>
-      <div className="cardModal grandes">
+      </Link>
+      <Link to="/login/estudiantes/primaria-secundaria" className="cardModal grandes">
         <div className="overlayModal"></div>
         <div className="circleModalGrandes"></div>
         <p className="font-medium">Estudiantes Grandes</p>
-      </div>
+      </Link>
     </div>
   );
 };
@@ -18,16 +20,16 @@ export const ContenidoModalEstudiante = () => {
 export const ContenidoModalDirectivo = () => {
   return (
     <div className="container-cardsModal">
-      <div className="cardModal directivos">
+      <Link to="/login/directivos/directivos-docentes" className="cardModal directivos">
         <div className="overlayModal"></div>
         <div className="circleModalDirectivos"></div>
         <p className="font-medium">Directivos</p>
-      </div>
-      <div className="cardModal docentes">
+      </Link>
+      <Link to="/login/directivos/directivos-docentes" className="cardModal docentes">
         <div className="overlayModal"></div>
         <div className="circleModalDocentes"></div>
         <p className="font-medium">Docentes</p>
-      </div>
+      </Link>
     </div>
   );
 };
