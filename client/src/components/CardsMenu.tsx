@@ -1,5 +1,3 @@
-import { FaYoutube, FaTwitch } from "react-icons/fa";
-
 interface CardsMenuProps {
   handleOpenModal: (card: string) => void;
 }
@@ -9,22 +7,18 @@ const CardsMenu = ({ handleOpenModal }: CardsMenuProps) => {
     <>
       <div
         onClick={() => handleOpenModal("Estudiantes")}
-        className="card youtube"
+        className="card estudiantes"
       >
         <div className="overlay"></div>
-        <div className="circle">
-          <FaYoutube className="logo" />
-        </div>
+        <div className="circleEstudiantes"></div>
         <p className="font-medium">Estudiantes</p>
       </div>
       <div
         onClick={() => handleOpenModal("Directivos")}
-        className="card twitch"
+        className="card directivos"
       >
         <div className="overlay"></div>
-        <div className="circle">
-          <FaTwitch className="logo" />
-        </div>
+        <div className="circleDirectivos"></div>
         <p className="font-medium">Directivos</p>
       </div>
     </>
