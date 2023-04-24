@@ -1,4 +1,4 @@
-import { Menu, NotFound } from "@/layout";
+import { Menu, NotFound, SecondMenu } from "@/layout";
 import { Login } from "@/features/auth/pages";
 import { Route, Routes } from "react-router-dom";
 
@@ -10,6 +10,7 @@ function App() {
       <Route path="/login/estudiantes/:opcion" element={<Login />} />
       <Route path="/login/directivos/:opcion" element={<Login />} />
       <Route path="/login/directivos/:opcion" element={<Login />} />
+      <Route path="/menu-principal" element={<SecondMenu />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
