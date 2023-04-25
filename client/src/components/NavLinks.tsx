@@ -1,45 +1,46 @@
 import { useState } from "react";
 import { FiChevronUp, FiChevronDown } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 const linksNav = [
   {
     name: "Cuadro Honor",
-    link: "/cuadro-honor",
+    link: "cuadro-honor",
   },
   {
     name: "Historicos",
-    link: "/historicos",
+    link: "historicos",
     subMenu: true,
     subLinks: [
       {
         name: "Herramientas",
-        link: "/herramientas",
+        link: "historicos/herramientas",
       },
       {
         name: "Proyecto de aula",
-        link: "/proyecto-aula",
+        link: "historicos/proyecto-aula",
       },
       {
         name: "Plan de trabajo",
-        link: "/plan-trabajo",
+        link: "historicos/plan-trabajo",
       },
       {
         name: "Contenido audiovisual",
-        link: "/contenido-audiovisual",
+        link: "historicos/contenido-audiovisual",
       },
     ],
   },
   {
     name: "Estudiantes",
-    link: "/estudiantes",
+    link: "estudiantes",
   },
   {
     name: "Docentes",
-    link: "/docentes",
+    link: "docentes",
   },
   {
     name: "Estadisticas",
-    link: "/estadisticas",
+    link: "estadisticas",
   },
 ];
 
@@ -52,7 +53,8 @@ const NavLinks = () => {
       {linksNav.map((link, index) => (
         <div key={index}>
           <div className="px-3 text-left md:cursor-pointer group">
-            <h1
+            <Link
+              to={link.link}
               className="py-7 transition duration-200 flex justify-between items-center md:pr-0 pr-5 group text-gris-30 hover:text-white border-b-2 border-transparent hover:border-white"
               onClick={() => {
                 heading !== link.name ? setHeading(link.name) : setHeading("");
@@ -74,7 +76,7 @@ const NavLinks = () => {
                   </span>
                 </div>
               )}
-            </h1>
+            </Link>
             {link.subLinks && (
               <div>
                 <div className="absolute top-20 hidden group-hover:md:block hover:md:block">
@@ -87,9 +89,12 @@ const NavLinks = () => {
                   <div className="bg-[#475594] p-5">
                     {link.subLinks.map((mysublinks, index) => (
                       <div key={index}>
-                        <h1 className="text-sm transition duration-200 text-gris-30 hover:text-white mb-3">
+                        <Link
+                          to={mysublinks.link}
+                          className="text-sm transition duration-200 text-gris-30 hover:text-white mb-3"
+                        >
                           {mysublinks.name}
-                        </h1>
+                        </Link>
                         {}
                       </div>
                     ))}
@@ -109,7 +114,8 @@ const NavLinks = () => {
               <div className="bg-[#475594] p-5">
                 {link.subLinks.map((mySubLinks, index) => (
                   <div key={index}>
-                    <h1
+                    <Link
+                      to={mySubLinks.link}
                       className="text-sm text-white mb-3"
                       onClick={() =>
                         subHeading !== mySubLinks.name
@@ -118,7 +124,7 @@ const NavLinks = () => {
                       }
                     >
                       {mySubLinks.name}
-                    </h1>
+                    </Link>
                   </div>
                 ))}
               </div>

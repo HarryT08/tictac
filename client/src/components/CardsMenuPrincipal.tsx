@@ -1,3 +1,4 @@
+import {Link} from "react-router-dom"
 const CardsMenuPrincipal = () => {
   return (
     <>
@@ -11,11 +12,11 @@ const CardsMenuPrincipal = () => {
         <div className="circleCompetencias"></div>
         <p className="font-medium">Competencias</p>
       </div>
-      <div className="card herramientas">
+      <Link to="/herramientas" className="card herramientas">
         <div className="overlay"></div>
         <div className="circleHerramientas"></div>
         <p className="font-medium">Herramientas</p>
-      </div>
+      </Link>
     </>
   );
 };

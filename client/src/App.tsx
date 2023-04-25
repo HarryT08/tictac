@@ -12,7 +12,7 @@ function App() {
       <Route path="/login/directivos/:opcion" element={<Login />} />
       <Route path="/login/directivos/:opcion" element={<Login />} />
       <Route path="/menu-principal" element={<SecondMenu />} />
-      <Route path="/herramientas" element={<Herramientas />} />
+      <Route path="/herramientas/*" element={<Herramientas />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
