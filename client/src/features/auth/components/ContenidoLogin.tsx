@@ -4,15 +4,15 @@ import { useMostrarPassword } from "@/features/auth/hooks/useMostrarPassword";
 export const FormularioLoginEstudiantesPrimaria = () => {
   return (
     <div className="w-full h-screen flex">
-      <div className="bg-[url('../../../../public/images/imageForm1.png')] bg-cover bg-center bg-no-repeat w-3/4"></div>
-      <div className="w-2/5 flex justify-center items-center">
+      <div className="w-3/4 lg:block hidden bg-[url('../../../../public/images/imageForm1.png')] bg-cover bg-center bg-no-repeat"></div>
+      <div className="w-full lg:w-2/5 flex justify-center items-center">
         <div className="p-3 w-2/3">
           <h1 className="font-semibold text-3xl text-center underline">
             Inicio de sesión
           </h1>
           <form className="mt-14">
             <div>
-              <label className="font-semibold text-lg">
+              <label className="font-semibold text-sm sm:text-lg">
                 Nombre del estudiante
               </label>
               <div className="flex items-center gap-2 focus-within:outline outline-2 outline-azul-50 rounded-lg border-2 border-gris-50 hover:border-gris-100 mt-2">
@@ -27,7 +27,7 @@ export const FormularioLoginEstudiantesPrimaria = () => {
               </div>
             </div>
             <div className="my-6">
-              <label className="font-semibold text-lg">
+              <label className="font-semibold text-sm sm:text-lg">
                 Codigo del estudiante
               </label>
               <div className="flex items-center gap-2 focus-within:outline outline-2 outline-azul-50 rounded-lg border-2 border-gris-50 hover:border-gris-100 mt-2">

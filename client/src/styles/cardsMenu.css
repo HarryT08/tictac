@@ -16,7 +16,7 @@
   --bg-color-light: #e2fced;
 }
 .grandes {
-  --bg-color: #ff1c41;
+  --bg-color: #515487;
   --bg-color-light: #e2fced;
 }
 .directivos {
@@ -24,8 +24,18 @@
   --bg-color-light: #f0e7ff;
 }
 
+.coordinador {
+  --bg-color: #ff735c;
+  --bg-color-light: #f0e7ff;
+}
+
 .docentes {
-  --bg-color: #FFDBAB;
+  --bg-color: #ff4f5a;
+  --bg-color-light: #f0e7ff;
+}
+
+.liderPpt {
+  --bg-color: #1a2e35;
   --bg-color-light: #f0e7ff;
 }
 
@@ -163,19 +173,6 @@
 @media screen and (max-width: 768px) {
   .card:hover .overlay {
     transform: scale(20) translateZ(0);
-  }
-
-  .cardModal:hover .overlayModal {
-    transform: scale(10) translateZ(0);
-  }
-
-  .container-cardsModal {
-    flex-direction: column;
-  }
-
-  .cardModal {
-    width: 100%;
-    height: 30vh;
   }
 }
 

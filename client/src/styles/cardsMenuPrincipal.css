@@ -1,0 +1,128 @@
+.principios {
+  --bg-color: #D68955;
+  --bg-color-light: #f0e7ff;
+}
+
+.competencias {
+  --bg-color: #B4DD7F;
+  --bg-color-light: #f0e7ff;
+}
+
+.herramientas {
+  --bg-color: #2ABDC4;
+  --bg-color-light: #f0e7ff;
+}
+
+.card:hover .circlePrincipios {
+  border-color: var(--bg-color-light);
+  background: var(--bg-color);
+}
+
+.card:hover .circleCompetencias {
+  border-color: var(--bg-color-light);
+  background: var(--bg-color);
+}
+
+.card:hover .circleHerramientas {
+  border-color: var(--bg-color-light);
+  background: var(--bg-color);
+}
+
+.card:hover .circlePrincipios:after {
+  background-image: url("../../public/images/principios.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.card:hover .circleCompetencias:after {
+  background-image: url("../../public/images/competencias.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.card:hover .circleHerramientas:after {
+  background-image: url("../../public/images/herramientas.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.circlePrincipios {
+  width: 131px;
+  height: 131px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid var(--bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease-out;
+}
+
+.circleCompetencias {
+  width: 131px;
+  height: 131px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid var(--bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease-out;
+}
+
+.circleHerramientas {
+  width: 131px;
+  height: 131px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid var(--bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease-out;
+}
+
+.circlePrincipios:after {
+  content: "";
+  width: 118px;
+  height: 118px;
+  display: block;
+  position: absolute;
+  background-image: url("../../public/images/principios.jpg");
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  transition: opacity 0.3s ease-out;
+}
+
+.circleCompetencias:after {
+  content: "";
+  width: 118px;
+  height: 118px;
+  display: block;
+  position: absolute;
+  background-image: url("../../public/images/competencias.jpg");
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  transition: opacity 0.3s ease-out;
+}
+
+.circleHerramientas:after {
+  content: "";
+  width: 118px;
+  height: 118px;
+  display: block;
+  position: absolute;
+  background-image: url("../../public/images/herramientas.jpg");
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  transition: opacity 0.3s ease-out;
+}

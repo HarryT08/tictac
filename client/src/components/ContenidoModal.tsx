@@ -6,12 +6,12 @@ export const ContenidoModalEstudiante = () => {
       <Link to="/login/estudiantes/primaria" className="cardModal pequenios">
         <div className="overlayModal"></div>
         <div className="circleModalPequenios"></div>
-        <p className="font-medium">Estudiantes de 1° hasta 3°</p>
+        <p className="font-medium text-center">Preescolar hasta 3°</p>
       </Link>
       <Link to="/login/estudiantes/primaria-secundaria" className="cardModal grandes">
         <div className="overlayModal"></div>
         <div className="circleModalGrandes"></div>
-        <p className="font-medium">Estudiantes de 4° hasta 11°</p>
+        <p className="font-medium text-center">Estudiantes de 4° hasta 11°</p>
       </Link>
     </div>
   );
@@ -20,15 +20,20 @@ export const ContenidoModalEstudiante = () => {
 export const ContenidoModalDirectivo = () => {
   return (
     <div className="container-cardsModal">
-      <Link to="/login/directivos/directivos-docentes" className="cardModal directivos">
+      <Link to="/login/directivos/directivos-docentes" className="cardModal coordinador">
         <div className="overlayModal"></div>
-        <div className="circleModalDirectivos"></div>
-        <p className="font-medium">Coordinadores y Rector</p>
+        <div className="circleModalCoordinador"></div>
+        <p className="font-medium text-center">Coordinador y Rector</p>
       </Link>
       <Link to="/login/directivos/directivos-docentes" className="cardModal docentes">
         <div className="overlayModal"></div>
         <div className="circleModalDocentes"></div>
-        <p className="font-medium">Docentes</p>
+        <p className="font-medium text-center">Docentes</p>
+      </Link>
+      <Link to="/login/directivos/directivos-docentes" className="cardModal liderPpt">
+        <div className="overlayModal"></div>
+        <div className="circleModalLiderPpt"></div>
+        <p className="font-medium text-center">Lider PPT</p>
       </Link>
     </div>
   );
