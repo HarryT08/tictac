@@ -7,6 +7,7 @@ export default {
       colors: {
         gris: {
           50: "#A8A8A8",
+          30: "#C6C6C6",
           100: "#6B6B6B",
         },
         azul: {

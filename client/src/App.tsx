@@ -1,5 +1,6 @@
 import { Menu, NotFound, SecondMenu } from "@/layout";
 import { Login } from "@/features/auth/pages";
+import { Herramientas } from "@/features/directivos/pages";
 import { Route, Routes } from "react-router-dom";
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
       <Route path="/login/directivos/:opcion" element={<Login />} />
       <Route path="/login/directivos/:opcion" element={<Login />} />
       <Route path="/menu-principal" element={<SecondMenu />} />
+      <Route path="/herramientas" element={<Herramientas />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
