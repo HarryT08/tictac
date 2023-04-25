@@ -55,7 +55,7 @@ const NavLinks = () => {
           <div className="px-3 text-left md:cursor-pointer group">
             <Link
               to={link.link}
-              className="py-7 transition duration-200 flex justify-between items-center md:pr-0 pr-5 group text-gris-30 hover:text-white border-b-2 border-transparent hover:border-white"
+              className="py-7 transition duration-200 flex justify-between items-center md:pr-0 pr-5 group text-gray-200 hover:text-white border-b-2 border-transparent hover:border-white"
               onClick={() => {
                 heading !== link.name ? setHeading(link.name) : setHeading("");
                 setSubHeading("");
@@ -83,15 +83,15 @@ const NavLinks = () => {
                   <div className="py-3">
                     <div
                       className="w-4 h-4 left-3 absolute
-                mt-1 bg-[#475594] rotate-45"
+                mt-1 bg-azul-200 rotate-45"
                     ></div>
                   </div>
-                  <div className="bg-[#475594] p-5">
+                  <div className="bg-azul-200 grid grid-cols-2 gap-10 p-5">
                     {link.subLinks.map((mysublinks, index) => (
-                      <div key={index}>
+                      <div key={index} className="">
                         <Link
                           to={mysublinks.link}
-                          className="text-sm transition duration-200 text-gris-30 hover:text-white mb-3"
+                          className="text-sm transition duration-200 text-gray-200 hover:text-white py-3 border-b-2 border-transparent hover:border-white"
                         >
                           {mysublinks.name}
                         </Link>
@@ -111,12 +111,12 @@ const NavLinks = () => {
           >
             {/* SubLinks */}
             {link.subLinks && (
-              <div className="bg-[#475594] p-5">
+              <div className="bg-azul-200 p-5">
                 {link.subLinks.map((mySubLinks, index) => (
-                  <div key={index}>
+                  <div key={index} className="py-3">
                     <Link
                       to={mySubLinks.link}
-                      className="text-sm text-white mb-3"
+                      className="text-sm text-white py-3 border-b-2 border-transparent hover:border-white transition duration-200"
                       onClick={() =>
                         subHeading !== mySubLinks.name
                           ? setSubHeading(mySubLinks.name)

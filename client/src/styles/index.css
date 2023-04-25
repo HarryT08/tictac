@@ -2,6 +2,7 @@
 @import url("./cardsMenu.css");
 @import url("./cardsModal.css");
 @import url("./cardsMenuPrincipal.css");
+@import url("./pagination.css");
 
 * {
   margin: 0px;

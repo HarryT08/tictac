@@ -1,6 +1,6 @@
 const UserMenu = () => {
   return (
-    <div className="flex items-center gap-3 cursor-pointer text-gris-50 hover:text-white transition duration-200">
+    <div className="flex items-center gap-3 cursor-pointer text-gray-200 hover:text-white transition duration-200">
       <img
         src="../../public/images/Coordinador.jpg"
         alt="foto-perfil"
