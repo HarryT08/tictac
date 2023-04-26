@@ -1,7 +1,10 @@
 package com.art.ufps.tictac.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.boot.context.properties.ConstructorBinding;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -18,4 +21,11 @@ public class Poblacion implements Serializable {
 
     @Column(name = "nombre")
     private String nombre;
+
+
+    public Poblacion() {}
+    public Poblacion(String nombre) {
+        this.nombre = nombre;
+    }
+
 }
