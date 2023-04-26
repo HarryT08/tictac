@@ -4,6 +4,7 @@ import {
   Estudiantes,
   Docentes,
   ProyectoAula,
+  PlanTrabajo,
 } from "@/features/directivos/pages";
 import { Route, Routes } from "react-router";
 
@@ -21,10 +22,7 @@ const Herramientas = () => {
             element={<h1>Historico herramientas</h1>}
           />
           <Route path="/historicos/proyecto-aula" element={<ProyectoAula />} />
-          <Route
-            path="/historicos/plan-trabajo"
-            element={<h1>Historico plan de trabajo</h1>}
-          />
+          <Route path="/historicos/plan-trabajo" element={<PlanTrabajo />} />
           <Route
             path="/historicos/contenido-audiovisual"
             element={<h1>Historico contenido audiovisual</h1>}
