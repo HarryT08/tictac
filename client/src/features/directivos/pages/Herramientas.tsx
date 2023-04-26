@@ -1,6 +1,6 @@
 import { Navbar } from "@/components";
 import { CuadroHonor } from "@/layout";
-import { Estudiantes } from "@/features/directivos/pages";
+import { Estudiantes, Docentes } from "@/features/directivos/pages";
 import { Route, Routes } from "react-router";
 
 const Herramientas = () => {
@@ -29,7 +29,7 @@ const Herramientas = () => {
             element={<h1>Historico contenido audiovisual</h1>}
           />
           <Route path="/estudiantes" element={<Estudiantes/>} />
-          <Route path="/docentes" element={<h1>docentes</h1>} />
+          <Route path="/docentes" element={<Docentes/>} />
           <Route path="/estadisticas" element={<h1>estadisticas</h1>} />
         </Routes>
       </div>
