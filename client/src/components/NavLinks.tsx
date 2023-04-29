@@ -52,7 +52,7 @@ const NavLinks = () => {
     <>
       {linksNav.map((link, index) => (
         <div key={index}>
-          <div className="px-3 text-left md:cursor-pointer group">
+          <div className="px-3 text-left md:cursor-pointer">
             <Link
               to={link.link}
               className="py-7 transition duration-200 flex justify-between items-center md:pr-0 pr-5 group text-gray-200 hover:text-white border-b-2 border-transparent hover:border-white"
