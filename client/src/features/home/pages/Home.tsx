@@ -1,5 +1,5 @@
 import { Navbar, Slider } from "@/features/home/components";
-import { ModeloTicTac} from "@/features/home/layout";
+import { ModeloTicTac, CuadroHonor } from "@/features/home/layout";
 
 const Home = () => {
   return (
@@ -42,7 +42,8 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <ModeloTicTac/>
+      <ModeloTicTac />
+      <CuadroHonor />
     </>
   );
 };

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { cartas } from "@/features/home/utils/DataCards";
+import { Header} from "@/features/home/components";
 import { FiCheckCircle } from "react-icons/fi";
 
 const ModeloTicTac = () => {
@@ -24,9 +25,7 @@ const ModeloTicTac = () => {
 
   return (
     <section className="px-12 py-10">
-      <h2 className="font-semibold text-3xl border-b-2 border-gray-400 pb-2">
-        Modelo Tic-Tac
-      </h2>
+      <Header titulo="Modelo Tic-Tac"/>
       <div className="flex items-center mt-8 space-x-4">
         {filters.map((filter) => (
           <label
