@@ -1,5 +1,4 @@
-import { honorRankings } from "@/features/home/utils/HonorRanking";
-import { AiFillStar } from "react-icons/ai";
+import { honorRankings } from "@/features/home/utils/honorRanking";
 
 const CardCuadroHonor = () => {
   return (
