@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { cartas } from "@/features/home/utils/DataCards";
+import { cartas } from "@/features/home/utils/dataCards";
 import { Header} from "@/features/home/components";
 import { FiCheckCircle } from "react-icons/fi";
 

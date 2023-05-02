@@ -1,8 +1,8 @@
 import { Header } from "@/features/home/components";
 import { useState } from "react";
-import { herramientas } from "@/features/home/utils/herramientas";
+import { contenidoAudiovisual } from "@/features/home/utils/contenidoAudiovisual";
 
-const Herramientas = () => {
+const ContenidoAudiovisual = () => {
   const filters = [
     {
       label: "Relaciones sociales y practicas civicas",
@@ -26,13 +26,13 @@ const Herramientas = () => {
   };
 
   // Filtrar las cartas según el filtro seleccionado
-  const filteredHerramientas = herramientas.filter(
-    (herramienta) => herramienta.categoria === selectedFilter
+  const filteredContenidoAudiovisual = contenidoAudiovisual.filter(
+    (contenidoAudiovisual) => contenidoAudiovisual.tipo === selectedFilter
   );
 
   return (
     <section className="px-12 py-10">
-      <Header titulo="Herramientas" />
+      <Header titulo="Contenido audiovisual" />
       <div className="flex items-center mt-8 space-x-4">
         {filters.map((filter) => (
           <label
@@ -55,18 +55,28 @@ const Herramientas = () => {
           </label>
         ))}
       </div>
-      <div className="mt-8 flex justify-center flex-col gap-3">
-        {filteredHerramientas.map((herramienta) => (
+      {/* Mostrar las cartas filtradas */}
+      <div className="mt-8 flex justify-center flex-wrap gap-3">
+        {filteredContenidoAudiovisual.map((contenidoAudiovisual) => (
           <div
-            key={herramienta.id}
-            className="bg-white rounded-lg shadow-md max-w-[800px] flex items-center justify-between"
+            key={contenidoAudiovisual.id}
+            className="w-96 border-2 rounded-lg shadow-md"
           >
-            <h3 className="font-semibold text-lg mb-2 rounded-tl-lg rounded-tr-lg p-3">
-              {herramienta.titulo}
-            </h3>
-            <button className="px-4 py-1 bg-azul-50 hover:bg-azul-100 transition duration-300 rounded-lg text-white font-medium">
-              Ver
-            </button>
+            <img
+              src={contenidoAudiovisual.imagen}
+              alt={`Imagen de perfil de ${contenidoAudiovisual.titulo}`}
+              className="rounded-full h-36 w-36 object-cover object-center m-auto mt-1"
+            />
+            <div className="p-3 space-y-2">
+              <p className="font-semibold text-lg text-center">
+                {contenidoAudiovisual.titulo}
+              </p>
+              <p className="text-center">{contenidoAudiovisual.descripcion}</p>
+              <p className="text-center">{contenidoAudiovisual.docente}</p>
+              <button className="bg-azul-50 hover:bg-azul-100 transition duration-300 w-full rounded-lg p-2 text-white font-medium">
+                Ver
+              </button>
+            </div>
           </div>
         ))}
       </div>
@@ -74,4 +84,4 @@ const Herramientas = () => {
   );
 };
 
-export default Herramientas;
+export default ContenidoAudiovisual;

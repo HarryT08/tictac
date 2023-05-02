@@ -1,5 +1,10 @@
-import { Navbar, Slider } from "@/features/home/components";
-import { ModeloTicTac, CuadroHonor, Herramientas } from "@/features/home/layout";
+import { Navbar, Slider, Footer } from "@/features/home/components";
+import {
+  ModeloTicTac,
+  CuadroHonor,
+  Herramientas,
+  ContenidoAudiovisual,
+} from "@/features/home/layout";
 
 const Home = () => {
   return (
@@ -45,6 +50,8 @@ const Home = () => {
       <ModeloTicTac />
       <CuadroHonor />
       <Herramientas />
+      <ContenidoAudiovisual />
+      <Footer />
     </>
   );
 };
