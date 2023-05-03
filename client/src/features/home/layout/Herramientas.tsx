@@ -33,7 +33,7 @@ const Herramientas = () => {
   return (
     <section className="px-12 py-10">
       <Header titulo="Herramientas" />
-      <div className="flex items-center mt-8 space-x-4">
+      <div className="flex flex-wrap gap-3 items-center mt-8 w-full overflow-x-auto">
         {filters.map((filter) => (
           <label
             key={filter.value}
@@ -41,7 +41,7 @@ const Herramientas = () => {
               selectedFilter === filter.value
                 ? "bg-azul-100 text-white"
                 : "bg-gray-200 hover:bg-gray-300 text-gray-700 transition duration-300"
-            } px-4 py-2 rounded-full cursor-pointer transition-colors duration-300`}
+            } px-4 py-2 rounded-full cursor-pointer transition-colors duration-300 text-center text-sm md:text-base`}
           >
             <input
               type="radio"
@@ -61,10 +61,10 @@ const Herramientas = () => {
             key={herramienta.id}
             className="bg-white rounded-lg shadow-md max-w-[800px] flex items-center justify-between"
           >
-            <h3 className="font-semibold text-lg mb-2 rounded-tl-lg rounded-tr-lg p-3">
+            <h3 className="font-semibold text-sm md:text-lg mb-2 rounded-tl-lg rounded-tr-lg p-3">
               {herramienta.titulo}
             </h3>
-            <button className="px-4 py-1 bg-azul-50 hover:bg-azul-100 transition duration-300 rounded-lg text-white font-medium">
+            <button className="text-sm md:text-lg px-4 py-1 bg-azul-50 hover:bg-azul-100 transition duration-300 rounded-lg text-white font-medium">
               Ver
             </button>
           </div>

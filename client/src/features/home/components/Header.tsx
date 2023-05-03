@@ -4,7 +4,7 @@ type HeaderProps = {
 
 const Header = ({ titulo }: HeaderProps) => {
   return (
-    <h2 className="font-semibold text-3xl border-b-2 border-gray-400 pb-2">
+    <h2 className="font-semibold text-2xl md:text-3xl border-b-2 border-gray-400 pb-2">
       {titulo}
     </h2>
   );

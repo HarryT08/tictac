@@ -22,7 +22,7 @@ const NavLinks = () => {
     <>
       {linksNav.map((link, index) => (
         <div key={index}>
-          <div className="text-center md:cursor-pointer m-2 md:mb-0">
+          <div className="text-center text-sm md:text-base md:cursor-pointer m-2 md:mb-0">
             <p className="px-3 py-2 bg-gray-100 hover:bg-gray-200 rounded-full transition duration-300 font-medium">
               {link.name}
             </p>

@@ -33,7 +33,7 @@ const ContenidoAudiovisual = () => {
   return (
     <section className="px-12 py-10">
       <Header titulo="Contenido audiovisual" />
-      <div className="flex items-center mt-8 space-x-4">
+      <div className="flex flex-wrap gap-3 items-center mt-8 w-full overflow-x-auto">
         {filters.map((filter) => (
           <label
             key={filter.value}
@@ -41,7 +41,7 @@ const ContenidoAudiovisual = () => {
               selectedFilter === filter.value
                 ? "bg-azul-100 text-white"
                 : "bg-gray-200 hover:bg-gray-300 text-gray-700 transition duration-300"
-            } px-4 py-2 rounded-full cursor-pointer transition-colors duration-300`}
+            } px-4 py-2 rounded-full cursor-pointer transition-colors duration-300 text-center text-sm md:text-base`}
           >
             <input
               type="radio"
@@ -65,15 +65,19 @@ const ContenidoAudiovisual = () => {
             <img
               src={contenidoAudiovisual.imagen}
               alt={`Imagen de perfil de ${contenidoAudiovisual.titulo}`}
-              className="rounded-full h-36 w-36 object-cover object-center m-auto mt-1"
+              className="rounded-t-lg h-36 w-full object-cover object-center m-auto"
             />
             <div className="p-3 space-y-2">
-              <p className="font-semibold text-lg text-center">
+              <p className="font-semibold text-base md:text-lg text-center">
                 {contenidoAudiovisual.titulo}
               </p>
-              <p className="text-center">{contenidoAudiovisual.descripcion}</p>
-              <p className="text-center">{contenidoAudiovisual.docente}</p>
-              <button className="bg-azul-50 hover:bg-azul-100 transition duration-300 w-full rounded-lg p-2 text-white font-medium">
+              <p className="text-center text-sm md:text-base">
+                {contenidoAudiovisual.descripcion}
+              </p>
+              <p className="text-center text-sm md:text-base">
+                {contenidoAudiovisual.docente}
+              </p>
+              <button className=" text-sm md:text-base bg-azul-50 hover:bg-azul-100 transition duration-300 w-full rounded-lg p-2 text-white font-medium">
                 Ver
               </button>
             </div>

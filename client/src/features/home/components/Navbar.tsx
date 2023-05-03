@@ -24,7 +24,7 @@ const Navbar = () => {
         <div className="md:block hidden">
           <button
             type="button"
-            className="flex items-center gap-2 hover:text-azul-50 transition duration-300"
+            className="flex items-center gap-2 hover:text-azul-50 transition duration-300 text-sm md:text-base"
           >
             <FiLogIn className="text-azul-50" />
             Iniciar sesión
@@ -34,7 +34,7 @@ const Navbar = () => {
         <ul
           className={`
           md:hidden bg-white fixed w-full top-0 overflow-y-auto bottom-0 py-24 pl-4
-          duration-500 ${open ? "left-0" : "left-[-100%]"}
+          duration-500 z-10 ${open ? "left-0" : "left-[-100%]"}
           `}
         >
           <NavLinks />

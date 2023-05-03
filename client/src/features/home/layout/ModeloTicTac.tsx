@@ -26,7 +26,7 @@ const ModeloTicTac = () => {
   return (
     <section className="px-12 py-10">
       <Header titulo="Modelo Tic-Tac"/>
-      <div className="flex items-center mt-8 space-x-4">
+      <div className="flex flex-wrap gap-3 items-center mt-8 w-full overflow-x-auto">
         {filters.map((filter) => (
           <label
             key={filter.value}
@@ -34,7 +34,7 @@ const ModeloTicTac = () => {
               selectedFilter === filter.value
                 ? "bg-azul-100 text-white"
                 : "bg-gray-200 hover:bg-gray-300 text-gray-700 transition duration-300"
-            } px-4 py-2 rounded-full cursor-pointer transition-colors duration-300`}
+            } px-4 py-2 rounded-full cursor-pointer transition-colors duration-300 text-center text-sm md:text-base`}
           >
             <input
               type="radio"
@@ -56,16 +56,16 @@ const ModeloTicTac = () => {
             key={carta.titulo}
             className="bg-white rounded-lg shadow-md max-w-[800px]"
           >
-            <h3 className="font-semibold text-lg text-white mb-2 bg-azul-100 text-center rounded-tl-lg rounded-tr-lg p-4">
+            <h3 className="font-semibold text-base md:text-lg text-white bg-azul-100 text-center rounded-t-lg p-4">
               {carta.titulo}
             </h3>
-            <div className="bg-gray-100 grid grid-cols-2 p-2 gap-3">
+            <div className="bg-gray-100 grid grid-cols-1 sm:grid-cols-2 p-2 gap-3">
               {carta.items.map((item) => (
                 <div key={item.id} className="flex gap-1">
                   <span className="text-azul-50">
                     <FiCheckCircle />
                   </span>
-                  <p>{item.descripcion}</p>
+                  <p className="text-xs md:text-base">{item.descripcion}</p>
                 </div>
               ))}
             </div>
