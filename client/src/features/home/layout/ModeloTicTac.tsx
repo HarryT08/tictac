@@ -24,7 +24,7 @@ const ModeloTicTac = () => {
   );
 
   return (
-    <section className="px-12 py-10">
+    <section className="px-12 py-10" id="modelo-tictac">
       <Header titulo="Modelo Tic-Tac"/>
       <div className="flex flex-wrap gap-3 items-center mt-8 w-full overflow-x-auto">
         {filters.map((filter) => (

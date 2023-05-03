@@ -1,12 +1,30 @@
 import { Navbar, Slider, Footer } from "@/features/home/components";
+import { FiChevronsUp } from "react-icons/fi";
 import {
   ModeloTicTac,
   CuadroHonor,
   Herramientas,
   ContenidoAudiovisual,
 } from "@/features/home/layout";
+import { animateScroll as scroll } from "react-scroll";
 
 const Home = () => {
+  const scrollUp = () => {
+    scroll.scrollToTop();
+  };
+
+  /* Hacer que se muestre un boton dependiendo de si hice cierto scroll para colocarle la funcion scrollUp */
+  window.addEventListener("scroll", () => {
+    const scrollBtn = document.getElementById("scrollBtn");
+    if (scrollBtn) {
+      if (window.scrollY > 200) {
+        scrollBtn.classList.add("showScrollBtn");
+      } else {
+        scrollBtn.classList.remove("showScrollBtn");
+      }
+    }
+  });
+
   return (
     <>
       <Navbar />
@@ -51,6 +69,9 @@ const Home = () => {
           </div>
         </div>
       </section>
+      <button onClick={scrollUp} id="scrollBtn">
+        <FiChevronsUp className="text-lg"/>
+      </button>
       <ModeloTicTac />
       <CuadroHonor />
       <Herramientas />

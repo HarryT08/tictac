@@ -15,6 +15,30 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
+.showScrollBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background-color: #186ADE;
+  color: #fff;
+  border-radius: 50%;
+  border: 2px solid #186ADE;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  visibility: block;
+  z-index: 1000;
+}
+
+.showScrollBtn:hover{
+  background-color: #fff;
+  color: #186ADE;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

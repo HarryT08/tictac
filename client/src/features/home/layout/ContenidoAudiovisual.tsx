@@ -31,7 +31,7 @@ const ContenidoAudiovisual = () => {
   );
 
   return (
-    <section className="px-12 py-10">
+    <section className="px-12 py-10" id="contenido-audiovisual">
       <Header titulo="Contenido audiovisual" />
       <div className="flex flex-wrap gap-3 items-center mt-8 w-full overflow-x-auto">
         {filters.map((filter) => (

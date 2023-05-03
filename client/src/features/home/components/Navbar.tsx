@@ -19,7 +19,7 @@ const Navbar = () => {
           </div>
         </div>
         <ul className="md:flex hidden items-center gap-8">
-          <NavLinks />
+          <NavLinks setOpen={setOpen} open={open} />
         </ul>
         <div className="md:block hidden">
           <button
@@ -33,15 +33,15 @@ const Navbar = () => {
         {/* Mobile nav */}
         <ul
           className={`
-          md:hidden bg-white fixed w-full top-0 overflow-y-auto bottom-0 py-24 pl-4
+          md:hidden bg-white fixed w-full top-0 overflow-y-auto bottom-0 py-24
           duration-500 z-10 ${open ? "left-0" : "left-[-100%]"}
           `}
         >
-          <NavLinks />
+          <NavLinks setOpen={setOpen} open={open} />
           <div className="py-5 ">
             <button
               type="button"
-              className="m-auto flex items-center gap-2 transition duration-300 hover:text-azul-50"
+              className="m-auto flex items-center justify-center gap-2 transition duration-300 hover:text-azul-50"
             >
               <FiLogIn className="text-azul-50" />
               Iniciar sesión
