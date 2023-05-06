@@ -64,7 +64,7 @@ const Herramientas = () => {
             <h3 className="font-semibold text-sm md:text-lg mb-2 rounded-tl-lg rounded-tr-lg p-3">
               {herramienta.titulo}
             </h3>
-            <button className="text-sm md:text-lg px-4 py-1 bg-azul-50 hover:bg-azul-100 transition duration-300 rounded-lg text-white font-medium">
+            <button className="text-sm md:text-base px-4 py-1 bg-azul-50 hover:bg-azul-100 transition duration-300 rounded-lg text-white font-medium">
               Ver
             </button>
           </div>

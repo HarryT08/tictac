@@ -1,4 +1,4 @@
-import { Navbar, Slider, Footer } from "@/features/home/components";
+import { Navbar, Slider, Footer } from "@/features/home/components"
 import { FiChevronsUp } from "react-icons/fi";
 import {
   ModeloTicTac,
@@ -13,7 +13,6 @@ const Home = () => {
     scroll.scrollToTop();
   };
 
-  /* Hacer que se muestre un boton dependiendo de si hice cierto scroll para colocarle la funcion scrollUp */
   window.addEventListener("scroll", () => {
     const scrollBtn = document.getElementById("scrollBtn");
     if (scrollBtn) {
@@ -29,7 +28,7 @@ const Home = () => {
     <>
       <Navbar />
       <main className="px-12 py-10 flex flex-col items-center md:flex md:flex-row gap-4">
-        <div className="w-full h-[55vh] md:2/3 md:h-[75vh] bg-gray-100 rounded-3xl flex items-center">
+        <div className="w-full h-[55vh] md:w-2/3 md:h-[75vh] bg-gray-100 rounded-3xl flex items-center">
           <div className="p-6">
             <h1 className="font-semibold text-base md:text-3xl max-w-xl">
               Institución Educativa Nuestra Señora de las Mercedes

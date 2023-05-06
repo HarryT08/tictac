@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { NavLinks } from "@/features/home/components";
 import { FiAlignRight, FiXCircle, FiLogIn } from "react-icons/fi";
 import logo from "../../../../public/images/TicTac.png";
@@ -21,15 +22,12 @@ const Navbar = () => {
         <ul className="md:flex hidden items-center gap-8">
           <NavLinks setOpen={setOpen} open={open} />
         </ul>
-        <div className="md:block hidden">
-          <button
-            type="button"
-            className="flex items-center gap-2 hover:text-azul-50 transition duration-300 text-sm md:text-base"
-          >
+        <Link to="/menu" className="md:block hidden border-none">
+          <button className="flex items-center font-medium gap-2 hover:text-azul-50 transition duration-300 text-sm md:text-base">
             <FiLogIn className="text-azul-50" />
             Iniciar sesión
           </button>
-        </div>
+        </Link>
         {/* Mobile nav */}
         <ul
           className={`
@@ -38,15 +36,15 @@ const Navbar = () => {
           `}
         >
           <NavLinks setOpen={setOpen} open={open} />
-          <div className="py-5 ">
+          <Link to="/menu" className="py-5 border-none">
             <button
               type="button"
-              className="m-auto flex items-center justify-center gap-2 transition duration-300 hover:text-azul-50"
+              className="m-auto flex items-center justify-center font-medium gap-2 transition duration-300 hover:text-azul-50"
             >
               <FiLogIn className="text-azul-50" />
               Iniciar sesión
             </button>
-          </div>
+          </Link>
         </ul>
       </div>
     </nav>

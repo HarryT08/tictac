@@ -1,40 +1,25 @@
-import { Navbar } from "@/components";
-import { CuadroHonor } from "@/layout";
-import {
-  Estudiantes,
-  Docentes,
-  ProyectoAula,
-  PlanTrabajo,
-  HistoricoHerramientas,
-  VerHerramienta
-} from "@/features/directivos/pages";
-import { Route, Routes } from "react-router";
+import { useEffect } from "react";
+import { Route, Routes, useLocation } from "react-router";
+import { Dashboard } from "@/components";
 
 const Herramientas = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    const htmlElement = document.querySelector("html");
+    if (htmlElement) {
+      // Verificación de nulidad
+      htmlElement.style.scrollBehavior = "auto";
+      window.scroll({ top: 0 });
+      htmlElement.style.scrollBehavior = "";
+    }
+  }, [location.pathname]); // triggered on route change
+
   return (
     <>
-      <Navbar />
-      <div className="p-6">
-        <Routes>
-          <Route path="/" element={<CuadroHonor />} />
-          <Route path="/cuadro-honor" element={<CuadroHonor />} />
-          <Route path="/historicos" element={<h1>historicos</h1>} />
-          <Route
-            path="/historicos/herramientas"
-            element={<HistoricoHerramientas />}
-          />
-          <Route path="/historicos/herramientas/:nombre" element={<VerHerramienta/>}/>
-          <Route path="/historicos/proyecto-aula" element={<ProyectoAula />} />
-          <Route path="/historicos/plan-trabajo" element={<PlanTrabajo />} />
-          <Route
-            path="/historicos/contenido-audiovisual"
-            element={<h1>Historico contenido audiovisual</h1>}
-          />
-          <Route path="/estudiantes" element={<Estudiantes />} />
-          <Route path="/docentes" element={<Docentes />} />
-          <Route path="/estadisticas" element={<h1>estadisticas</h1>} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+      </Routes>
     </>
   );
 };

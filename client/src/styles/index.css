@@ -21,10 +21,10 @@ body {
   right: 20px;
   width: 50px;
   height: 50px;
-  background-color: #186ADE;
+  background-color: #186ade;
   color: #fff;
   border-radius: 50%;
-  border: 2px solid #186ADE;
+  border: 2px solid #186ade;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -34,9 +34,13 @@ body {
   z-index: 1000;
 }
 
-.showScrollBtn:hover{
+.showScrollBtn:hover {
   background-color: #fff;
-  color: #186ADE;
+  color: #186ade;
+}
+
+a{
+  border: none !important;
 }
 
 @tailwind base;
