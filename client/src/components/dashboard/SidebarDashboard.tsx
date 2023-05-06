@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { NavLink, useLocation, Link } from "react-router-dom";
 import { SidebarLinkGroups } from "@/components";
+import { FiAward, FiFolder, FiBarChart2, FiUsers } from "react-icons/fi";
 import logo from "../../../public/images/TicTac.png";
 
 interface SidebarDashboardProps {
@@ -98,9 +99,9 @@ const SidebarDashboard = ({
             </svg>
           </button>
           {/* Logo */}
-          <NavLink end to="/" className="block border-none hover:border-none">
+          <Link to="/herramientas" className="block border-none hover:border-none">
             <img src={logo} alt="" width={50} height={50} />
-          </NavLink>
+          </Link>
         </div>
 
         {/* Links */}
@@ -122,42 +123,30 @@ const SidebarDashboard = ({
               {/* Cuadro honor */}
               <li
                 className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${
-                  pathname.includes("inbox") && "bg-slate-900"
+                  pathname.includes("cuadro-honor") && "bg-slate-900"
                 }`}
               >
-                <NavLink
-                  end
-                  to="/inbox"
+                <Link
+                  to="/herramientas/cuadro-honor"
                   className={`block text-slate-200 truncate transition duration-150 ${
-                    pathname.includes("inbox")
+                    pathname.includes("cuadro-honor")
                       ? "hover:text-slate-200"
                       : "hover:text-white"
                   }`}
                 >
                   <div className="flex items-center">
-                    <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
-                      <path
-                        className={`fill-current ${
-                          pathname.includes("inbox")
-                            ? "text-indigo-500"
-                            : "text-slate-600"
-                        }`}
-                        d="M16 13v4H8v-4H0l3-9h18l3 9h-8Z"
-                      />
-                      <path
-                        className={`fill-current ${
-                          pathname.includes("inbox")
-                            ? "text-indigo-300"
-                            : "text-slate-400"
-                        }`}
-                        d="m23.72 12 .229.686A.984.984 0 0 1 24 13v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1v-8c0-.107.017-.213.051-.314L.28 12H8v4h8v-4H23.72ZM13 0v7h3l-4 5-4-5h3V0h2Z"
-                      />
-                    </svg>
+                    <FiAward
+                      className={`shrink-0 h-6 w-6 ${
+                        pathname.includes("cuadro-honor")
+                          ? "text-indigo-500"
+                          : "text-slate-400"
+                      }`}
+                    />
                     <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
                       Cuadro de honor
                     </span>
                   </div>
-                </NavLink>
+                </Link>
               </li>
 
               {/* Historicos */}
@@ -169,7 +158,7 @@ const SidebarDashboard = ({
                 {(handleClick, open) => {
                   return (
                     <>
-                      <Link
+                      <NavLink
                         to="#0"
                         className={`block text-slate-200 truncate transition duration-150${
                           pathname === "/" || pathname.includes("historicos")
@@ -185,38 +174,14 @@ const SidebarDashboard = ({
                       >
                         <div className="flex items-center justify-between ">
                           <div className="flex items-center">
-                            <svg
-                              className="shrink-0 h-6 w-6"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                className={`fill-current ${
-                                  pathname === "/" ||
-                                  pathname.includes("dashboard")
-                                    ? "text-indigo-500"
-                                    : "text-slate-400"
-                                }`}
-                                d="M12 0C5.383 0 0 5.383 0 12s5.383 12 12 12 12-5.383 12-12S18.617 0 12 0z"
-                              />
-                              <path
-                                className={`fill-current ${
-                                  pathname === "/" ||
-                                  pathname.includes("dashboard")
-                                    ? "text-indigo-600"
-                                    : "text-slate-600"
-                                }`}
-                                d="M12 3c-4.963 0-9 4.037-9 9s4.037 9 9 9 9-4.037 9-9-4.037-9-9-9z"
-                              />
-                              <path
-                                className={`fill-current ${
-                                  pathname === "/" ||
-                                  pathname.includes("dashboard")
-                                    ? "text-indigo-200"
-                                    : "text-slate-400"
-                                }`}
-                                d="M12 15c-1.654 0-3-1.346-3-3 0-.462.113-.894.3-1.285L6 6l4.714 3.301A2.973 2.973 0 0112 9c1.654 0 3 1.346 3 3s-1.346 3-3 3z"
-                              />
-                            </svg>
+                            <FiFolder
+                              className={`shrink-0 h-6 w-6 ${
+                                pathname === "/" ||
+                                pathname.includes("historicos")
+                                  ? "text-indigo-500"
+                                  : "text-slate-400"
+                              }`}
+                            />
                             <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
                               Historicos
                             </span>
@@ -233,72 +198,68 @@ const SidebarDashboard = ({
                             </svg>
                           </div>
                         </div>
-                      </Link>
+                      </NavLink>
                       <div className="lg:hidden lg:sidebar-expanded:block 2xl:block ">
                         <ul className={`pl-9 mt-1  ${!open && "hidden"}`}>
                           <li className="mb-1 last:mb-0">
-                            <NavLink
-                              end
-                              to="/"
-                              className={({ isActive }) =>
-                                "block transition duration-150 truncate " +
-                                (isActive
-                                  ? "text-indigo-500"
-                                  : "text-slate-400 hover:text-slate-200")
-                              }
+                            <Link
+                              to="historicos/herramientas"
+                              className={`block text-gray-400 truncate transition duration-150 ${
+                                pathname ===
+                                "/herramientas/historicos/herramientas"
+                                  ? "hover:text-slate-200 text-purple-300"
+                                  : "hover:text-white"
+                              }`}
                             >
                               <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
                                 Herramientas
                               </span>
-                            </NavLink>
+                            </Link>
                           </li>
                           <li className="mb-1 last:mb-0">
-                            <NavLink
-                              end
-                              to="/dashboard/analytics"
-                              className={({ isActive }) =>
-                                "block transition duration-150 truncate " +
-                                (isActive
-                                  ? "text-indigo-500"
-                                  : "text-slate-400 hover:text-slate-200")
-                              }
+                            <Link
+                              to="historicos/proyecto-aula"
+                              className={`block text-gray-400 truncate transition duration-150 ${
+                                pathname ===
+                                "/herramientas/historicos/proyecto-aula"
+                                  ? "hover:text-slate-200 text-purple-300"
+                                  : "hover:text-white"
+                              }`}
                             >
                               <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
                                 Proyecto de aula
                               </span>
-                            </NavLink>
+                            </Link>
                           </li>
                           <li className="mb-1 last:mb-0">
-                            <NavLink
-                              end
-                              to="/dashboard/fintech"
-                              className={({ isActive }) =>
-                                "block transition duration-150 truncate " +
-                                (isActive
-                                  ? "text-indigo-500"
-                                  : "text-slate-400 hover:text-slate-200")
-                              }
+                            <Link
+                              to="historicos/plan-trabajo"
+                              className={`block text-gray-400 truncate transition duration-150 ${
+                                pathname ===
+                                "/herramientas/historicos/plan-trabajo"
+                                  ? "hover:text-slate-200 text-purple-300"
+                                  : "hover:text-white"
+                              }`}
                             >
                               <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
                                 Plan de trabajo
                               </span>
-                            </NavLink>
+                            </Link>
                           </li>
                           <li className="mb-1 last:mb-0">
-                            <NavLink
-                              end
-                              to="/dashboard/fintech"
-                              className={({ isActive }) =>
-                                "block transition duration-150 truncate " +
-                                (isActive
-                                  ? "text-indigo-500"
-                                  : "text-slate-400 hover:text-slate-200")
-                              }
+                            <Link
+                              to="historicos/contenido-audiovisual"
+                              className={`block text-gray-400 truncate transition duration-150 ${
+                                pathname ===
+                                "/herramientas/historicos/contenido-audiovisual"
+                                  ? "hover:text-slate-200 text-purple-300"
+                                  : "hover:text-white"
+                              }`}
                             >
                               <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
                                 Contenido audiovisual
                               </span>
-                            </NavLink>
+                            </Link>
                           </li>
                         </ul>
                       </div>
@@ -310,78 +271,55 @@ const SidebarDashboard = ({
               {/* Docentes*/}
               <li
                 className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${
-                  pathname.includes("inbox") && "bg-slate-900"
+                  pathname.includes("docentes") && "bg-slate-900"
                 }`}
               >
-                <NavLink
-                  end
-                  to="/inbox"
+                <Link
+                  to="/herramientas/docentes"
                   className={`block text-slate-200 truncate transition duration-150 ${
-                    pathname.includes("inbox")
+                    pathname.includes("docentes")
                       ? "hover:text-slate-200"
                       : "hover:text-white"
                   }`}
                 >
                   <div className="flex items-center">
-                    <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
-                      <path
-                        className={`fill-current ${
-                          pathname.includes("inbox")
-                            ? "text-indigo-500"
-                            : "text-slate-600"
-                        }`}
-                        d="M16 13v4H8v-4H0l3-9h18l3 9h-8Z"
-                      />
-                      <path
-                        className={`fill-current ${
-                          pathname.includes("inbox")
-                            ? "text-indigo-300"
-                            : "text-slate-400"
-                        }`}
-                        d="m23.72 12 .229.686A.984.984 0 0 1 24 13v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1v-8c0-.107.017-.213.051-.314L.28 12H8v4h8v-4H23.72ZM13 0v7h3l-4 5-4-5h3V0h2Z"
-                      />
-                    </svg>
+                    <FiUsers
+                      className={`shrink-0 h-6 w-6 ${
+                        pathname.includes("docentes")
+                          ? "text-indigo-500"
+                          : "text-slate-400"
+                      }`}
+                    />
                     <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
                       Docentes
                     </span>
                   </div>
-                </NavLink>
+                </Link>
               </li>
 
               {/* Estudiantes */}
               <li
                 className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${
-                  pathname.includes("inbox") && "bg-slate-900"
+                  pathname.includes("estudiantes") && "bg-slate-900"
                 }`}
               >
                 <NavLink
                   end
-                  to="/inbox"
+                  to="/herramientas/estudiantes"
                   className={`block text-slate-200 truncate transition duration-150 ${
-                    pathname.includes("inbox")
+                    pathname.includes("estudiantes")
                       ? "hover:text-slate-200"
                       : "hover:text-white"
                   }`}
                 >
                   <div className="flex items-center">
-                    <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
-                      <path
-                        className={`fill-current ${
-                          pathname.includes("inbox")
-                            ? "text-indigo-500"
-                            : "text-slate-600"
-                        }`}
-                        d="M16 13v4H8v-4H0l3-9h18l3 9h-8Z"
-                      />
-                      <path
-                        className={`fill-current ${
-                          pathname.includes("inbox")
-                            ? "text-indigo-300"
-                            : "text-slate-400"
-                        }`}
-                        d="m23.72 12 .229.686A.984.984 0 0 1 24 13v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1v-8c0-.107.017-.213.051-.314L.28 12H8v4h8v-4H23.72ZM13 0v7h3l-4 5-4-5h3V0h2Z"
-                      />
-                    </svg>
+                    <FiUsers
+                      className={`shrink-0 h-6 w-6 ${
+                        pathname.includes("estudiantes")
+                          ? "text-indigo-500"
+                          : "text-slate-400"
+                      }`}
+                    />
                     <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
                       Estudiantes
                     </span>
@@ -392,23 +330,29 @@ const SidebarDashboard = ({
               {/* Estadisticas */}
               <li
                 className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${
-                  pathname.includes("inbox") && "bg-slate-900"
+                  pathname.includes("estadisticas") && "bg-slate-900"
                 }`}
               >
-                <NavLink
-                  end
-                  to="/inbox"
+                <Link
+                  to="/herramientas/estadisticas"
                   className={`block text-slate-200 truncate transition duration-150 ${
-                    pathname.includes("inbox")
+                    pathname.includes("estadisticas")
                       ? "hover:text-slate-200"
                       : "hover:text-white"
                   }`}
                 >
                   <div className="flex items-center">
-                    <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
+                    <FiBarChart2
+                      className={`shrink-0 h-6 w-6 ${
+                        pathname.includes("estadisticas")
+                          ? "text-indigo-500"
+                          : "text-slate-400"
+                      }`}
+                    />
+                    {/* <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
                       <path
                         className={`fill-current ${
-                          pathname.includes("inbox")
+                          pathname.includes("estadisticas")
                             ? "text-indigo-500"
                             : "text-slate-600"
                         }`}
@@ -416,18 +360,18 @@ const SidebarDashboard = ({
                       />
                       <path
                         className={`fill-current ${
-                          pathname.includes("inbox")
+                          pathname.includes("estadisticas")
                             ? "text-indigo-300"
                             : "text-slate-400"
                         }`}
                         d="m23.72 12 .229.686A.984.984 0 0 1 24 13v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1v-8c0-.107.017-.213.051-.314L.28 12H8v4h8v-4H23.72ZM13 0v7h3l-4 5-4-5h3V0h2Z"
                       />
-                    </svg>
+                    </svg> */}
                     <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
                       Estadisticas
                     </span>
                   </div>
-                </NavLink>
+                </Link>
               </li>
             </ul>
           </div>

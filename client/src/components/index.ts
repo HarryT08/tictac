@@ -1,10 +1,7 @@
-export { default as CardsMenu } from "./CardsMenu";
-export { default as CardsMenuPrincipal } from "./CardsMenuPrincipal";
+export { default as CardsMenu } from "./cards/CardsMenu";
+export { default as CardsMenuPrincipal } from "./cards/CardsMenuPrincipal";
 export { default as Modal } from "./Modal";
-export { default as Navbar } from "./Navbar";
-export { default as NavLinks } from "./NavLinks";
 export { default as UserMenu } from "./dashboard/UserMenu";
-export { default as TableHonor } from "./TableHonor";
 export { default as Header } from "./Header";
 export { default as Dashboard } from "./dashboard/Dashboard";
 export { default as SidebarDashboard } from "./dashboard/SidebarDashboard";

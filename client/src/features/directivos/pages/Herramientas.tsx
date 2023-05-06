@@ -18,7 +18,7 @@ const Herramientas = () => {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Dashboard />} />
+        <Route path="/*" element={<Dashboard />} />
       </Routes>
     </>
   );

@@ -3,7 +3,7 @@ import { CardsMenu, Modal } from "@/components";
 import {
   ContenidoModalEstudiante,
   ContenidoModalDirectivo,
-} from "@/components/ContenidoModal";
+} from "@/components/cards/ContenidoModal";
 
 const Menu = () => {
   const [openModal, setOpenModal] = useState<boolean>(false);

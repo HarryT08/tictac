@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { SidebarDashboard, NavbarDashboard } from "@/components";
+import { Routes, Route } from "react-router-dom";
 import { CuadroHonor } from "@/layout";
 import {
   Estudiantes,
@@ -30,29 +31,32 @@ const Dashboard = () => {
 
         <main>
           <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
-            <h1>Hola mundillo</h1>
-            {/* <Navbar />
-      <div className="p-6">
-        <Routes>
-          <Route path="/" element={<CuadroHonor />} />
-          <Route path="/cuadro-honor" element={<CuadroHonor />} />
-          <Route path="/historicos" element={<h1>historicos</h1>} />
-          <Route
-            path="/historicos/herramientas"
-            element={<HistoricoHerramientas />}
-          />
+            <Routes>
+              <Route path="/" element={<h1>Cuadro honor</h1>} />
+              <Route path="/cuadro-honor" element={<h1>Cuadro honor</h1>} />
+              <Route
+                path="/historicos/herramientas"
+                element={<h1>historico herramientas</h1>}
+              />
+              <Route
+                path="/historicos/proyecto-aula"
+                element={<h1>historico proyecto de aula</h1>}
+              />
+              <Route
+                path="/historicos/plan-trabajo"
+                element={<h1>historico plan de trabajo</h1>}
+              />
+              <Route
+                path="/historicos/contenido-audiovisual"
+                element={<h1>historico contenido audiovisual</h1>}
+              />
+              <Route path="/docentes" element={<h1>Docentes</h1>} />
+              <Route path="/estudiantes" element={<h1>Estudiantes</h1>} />
+              <Route path="/estadisticas" element={<h1>Estadisticas</h1>} />
+            </Routes>
+            {/* 
           <Route path="/historicos/herramientas/:nombre" element={<VerHerramienta/>}/>
-          <Route path="/historicos/proyecto-aula" element={<ProyectoAula />} />
-          <Route path="/historicos/plan-trabajo" element={<PlanTrabajo />} />
-          <Route
-            path="/historicos/contenido-audiovisual"
-            element={<h1>Historico contenido audiovisual</h1>}
-          />
-          <Route path="/estudiantes" element={<Estudiantes />} />
-          <Route path="/docentes" element={<Docentes />} />
-          <Route path="/estadisticas" element={<h1>estadisticas</h1>} />
-        </Routes>
-      </div> */}
+           */}
           </div>
         </main>
       </div>
