@@ -8,8 +8,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "tema", schema = "bd_tictac", catalog = "")
-@Getter
-@Setter
+@Getter @Setter
 public class Tema {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
