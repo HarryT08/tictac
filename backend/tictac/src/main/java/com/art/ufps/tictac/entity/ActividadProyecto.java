@@ -7,10 +7,10 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "actividad_plan_trabajo", schema = "bd_tictac", catalog = "")
+@Table(name = "actividad_proyecto", schema = "bd_tictac", catalog = "")
 @Getter
 @Setter
-public class ActividadPlanTrabajo {
+public class ActividadProyecto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id_actividad", nullable = false)

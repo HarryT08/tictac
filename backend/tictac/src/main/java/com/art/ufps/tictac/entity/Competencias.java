@@ -4,20 +4,18 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
 @Table(name = "competencias", schema = "bd_tictac", catalog = "")
 @Getter
 @Setter
-public class Competencias implements Serializable {
-    @Id
+public class Competencias {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_competencia")
+    @Id
+    @Column(name = "id_competencia", nullable = false)
     private int idCompetencia;
-    @Column(name = "nombre")
+    @Basic
+    @Column(name = "nombre", nullable = false, length = 50)
     private String nombre;
-
-    @ManyToOne
-    private Herramienta herramienta;
 }

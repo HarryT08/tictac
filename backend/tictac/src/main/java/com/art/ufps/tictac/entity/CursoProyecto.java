@@ -7,16 +7,20 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "proyecto_aula_estudiante", schema = "bd_tictac", catalog = "")
+@Table(name = "curso_proyecto", schema = "bd_tictac", catalog = "")
 @Getter
 @Setter
-public class ProyectoAulaEstudiante {
+public class CursoProyecto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id_estudiante", nullable = false)
-    private int idEstudiante;
+    @Column(name = "grado", nullable = false)
+    private int grado;
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id_proyecto", nullable = false)
     private int idProyecto;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @Column(name = "id_actividad", nullable = false)
+    private int idActividad;
 }

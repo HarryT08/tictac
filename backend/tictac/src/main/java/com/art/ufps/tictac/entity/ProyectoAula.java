@@ -4,42 +4,37 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
+import java.util.Objects;
 
 @Entity
-@Table(name = "proyecto_aula", schema = "bd_tictac")
+@Table(name = "proyecto_aula", schema = "bd_tictac", catalog = "")
 @Getter
 @Setter
-public class ProyectoAula implements Serializable {
+public class ProyectoAula {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id_proyecto", nullable = false)
     private int idProyecto;
-
-    @ManyToOne
-    @JoinColumn(name = "id_linea", nullable = false)
-    private LineaTransversal lineaTransversal;
-
-    @ManyToOne()
-    @JoinColumn(name = "id_curso", referencedColumnName= "id_curso", nullable = false)
-    private com.art.ufps.tictac.entity.Curso Curso;
-
-    @ManyToOne()
-    @JoinColumn(name = "docente_lider", nullable = false)
-    private Docente docenteLider;
-
+    @Basic
+    @Column(name = "curso", nullable = false)
+    private int curso;
+    @Basic
+    @Column(name = "id_tema", nullable = false)
+    private int idTema;
+    @Basic
+    @Column(name = "docente_lider", nullable = false, length = 50)
+    private String docenteLider;
+    @Basic
     @Column(name = "fecha_inicio", nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
     private Date fechaInicio;
-
+    @Basic
     @Column(name = "fecha_fin", nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
     private Date fechaFin;
-
-    @Column(name = "observaciones", nullable = false, length = 200)
-    private String observaciones;
-
+    @Basic
     @Column(name = "lecciones_aprendidas", nullable = false, length = 500)
     private String leccionesAprendidas;
+    @Basic
+    @Column(name = "nombre", nullable = false, length = 50)
+    private String nombre;
 }

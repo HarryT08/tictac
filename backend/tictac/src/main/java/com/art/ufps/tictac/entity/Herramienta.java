@@ -4,50 +4,46 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.List;
+import java.sql.Date;
+import java.util.Objects;
 
 @Entity
 @Table(name = "herramienta", schema = "bd_tictac", catalog = "")
 @Getter
 @Setter
-public class Herramienta implements Serializable {
-    @Id
+public class Herramienta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_herramienta")
+    @Id
+    @Column(name = "id_herramienta", nullable = false)
     private int idHerramienta;
-
-    @OneToMany(mappedBy = "herramienta")
-    private List<Competencias> competencia;
-
-    @ManyToOne()
-    @JoinColumn(name = "id_linea", nullable = false)
-    private LineaTransversal linea;
-
-    @Column(name = "id_poblacion")
-    private int idPoblacion;
-
-    @ManyToOne()
-    @JoinColumn(name = "docente_autor", nullable = false)
-    private Docente docenteAutor;
-
-    @Column(name = "nombre_herramienta")
+    @Basic
+    @Column(name = "id_tema", nullable = false)
+    private int idTema;
+    @Basic
+    @Column(name = "docente_autor", nullable = false, length = 50)
+    private String docenteAutor;
+    @Basic
+    @Column(name = "nombre_herramienta", nullable = false, length = 50)
     private String nombreHerramienta;
-    @Column(name = "tema_herramienta")
-    private String temaHerramienta;
-
-    @Column(name = "objetivos")
+    @Basic
+    @Column(name = "objetivos", nullable = false, length = 500)
     private String objetivos;
-
-    @Column(name = "visibilidad")
-    private String visibilidad;
-
-    @Column(name = "estado")
-    private String estado;
-
-    @Column(name = "recomendacion")
-    private String recomendacion;
-
-    @Column(name = "comentarios")
+    @Basic
+    @Column(name = "visibilidad", nullable = false)
+    private byte visibilidad;
+    @Basic
+    @Column(name = "comentarios", nullable = false, length = 500)
     private String comentarios;
+    @Basic
+    @Column(name = "estado", nullable = false, length = 2)
+    private String estado;
+    @Basic
+    @Column(name = "recomendacion", nullable = false, length = 500)
+    private String recomendacion;
+    @Basic
+    @Column(name = "fecha_aprobacion", nullable = false)
+    private Date fechaAprobacion;
+    @Basic
+    @Column(name = "fecha_creacion", nullable = false)
+    private Date fechaCreacion;
 }

@@ -4,27 +4,30 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
 @Table(name = "estudiante", schema = "bd_tictac", catalog = "")
 @Getter
 @Setter
-public class Estudiante implements Serializable {
-
-    @Id
+public class Estudiante {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_estudiante;
-
-    @OneToOne()
-    @JoinColumn(name = "id_usuario", nullable = false)
-    private Usuario usuario;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @OneToOne()
-    @JoinColumn(name = "id_curso", nullable = false)
-    private Curso curso;
+    @Column(name = "id_estudiante", nullable = false, length = 50)
+    private String idEstudiante;
     @Basic
-    @Column(name = "codigo")
-    private int codigo;
+    @Column(name = "numero_proyectos_sociales", nullable = false)
+    private int numeroProyectosSociales;
+    @Basic
+    @Column(name = "numero_proyectos_sexualidad", nullable = false)
+    private int numeroProyectosSexualidad;
+    @Basic
+    @Column(name = "numero_proyectos_ambiental", nullable = false)
+    private int numeroProyectosAmbiental;
+    @Basic
+    @Column(name = "numero_proyectos_emprendimiento", nullable = false)
+    private int numeroProyectosEmprendimiento;
+    @Basic
+    @Column(name = "numero_proyectos_tic", nullable = false)
+    private int numeroProyectosTic;
 }

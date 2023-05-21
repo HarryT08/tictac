@@ -1,6 +1,5 @@
 package com.art.ufps.tictac.controller;
 
-import com.art.ufps.tictac.entity.Usuario;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
