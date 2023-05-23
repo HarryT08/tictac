@@ -7,30 +7,40 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/persona")
 public class PersonaController {
   
   private final PersonaService personaService;
   
+  // Supongo que solo el admin interacciona con con las personas entonces deje los endpoints como /admin/....
+  
   @Autowired
   public PersonaController(PersonaService personaService) {
     this.personaService = personaService;
   }
   
-  
-  //Se supone que solo un admin puede crear un usuario
-  @PostMapping("/admin")
-  public ResponseEntity<?> createUser(@RequestBody Persona persona) {
+  @PostMapping("/admin/user/create")
+  public ResponseEntity<Persona> createUser(@RequestBody Persona persona) {
+    System.out.println(persona.toString());
     Persona savedUser = personaService.saveUser(persona);
-    if(savedUser == null) ResponseEntity.badRequest().body("No se pudo crear el usuario");
+    if(savedUser == null) ResponseEntity.badRequest().build();
     return ResponseEntity.ok(savedUser);
   }
   
-  //Se supone que solo un admin puede obtener a cualquier usuario
-  @GetMapping("/admin")
+  @GetMapping("/admin/user/{cedula}")
   public ResponseEntity<Persona> getUser(@RequestParam String cedula) {
-    return null;
+    Persona user = personaService.getUser(cedula);
+    if(user == null) return ResponseEntity.notFound().build();
+    return ResponseEntity.ok(user);
   }
   
+  @GetMapping("/admin/user")
+  public ResponseEntity<List<Persona>> getAllUsers() {
+    List<Persona> users = personaService.getAllUsers();
+    if(users == null) return ResponseEntity.noContent().build();
+    return ResponseEntity.ok(users);
+  }
 }

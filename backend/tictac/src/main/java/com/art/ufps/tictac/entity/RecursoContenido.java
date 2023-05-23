@@ -4,13 +4,14 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = "recurso_contenido", schema = "bd_tictac", catalog = "")
 @Getter
 @Setter
-public class RecursoContenido {
+public class RecursoContenido implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id_recurso", nullable = false)

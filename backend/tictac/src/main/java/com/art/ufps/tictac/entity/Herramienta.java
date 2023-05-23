@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.Objects;
 
@@ -11,7 +12,7 @@ import java.util.Objects;
 @Table(name = "herramienta", schema = "bd_tictac", catalog = "")
 @Getter
 @Setter
-public class Herramienta {
+public class Herramienta implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id_herramienta", nullable = false)

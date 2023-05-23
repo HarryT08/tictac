@@ -4,14 +4,14 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Date;
-import java.util.Objects;
 
 @Entity
 @Table(name = "lider_linea", schema = "bd_tictac", catalog = "")
 @Getter
 @Setter
-public class LiderLinea {
+public class LiderLinea implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id_docente", nullable = false, length = 50)

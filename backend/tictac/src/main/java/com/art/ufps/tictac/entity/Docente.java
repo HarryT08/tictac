@@ -4,13 +4,16 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = "docente", schema = "bd_tictac", catalog = "")
 @Getter
 @Setter
-public class Docente {
+public class Docente implements Serializable {
+    
+    //Ese generatedValue no falla? El id es un string no un int
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id_docente", nullable = false, length = 50)

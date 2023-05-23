@@ -2,8 +2,12 @@ package com.art.ufps.tictac.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.Objects;
 
@@ -11,8 +15,7 @@ import java.util.Objects;
 @Table(name = "persona", schema = "bd_tictac", catalog = "")
 @Getter
 @Setter
-public class Persona {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class Persona implements Serializable {
     @Id
     @Column(name = "cedula", nullable = false, length = 50)
     private String cedula;
@@ -33,8 +36,20 @@ public class Persona {
     private String codigo;
     @Basic
     @Column(name = "id_rol", nullable = false)
+    
+    @JoinTable(
+            name = "rol",
+            joinColumns = @JoinColumn(name = "id_rol"),
+            inverseJoinColumns = @JoinColumn(name = "id_rol")
+    )
     private int idRol;
+    
     @Basic
     @Column(name = "id_institucion", nullable = false)
     private int idInstitucion;
+    
+    @Override
+    public String toString(){
+        return this.cedula.getClass().getSimpleName() + " " + this.cedula;
+    }
 }
