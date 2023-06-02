@@ -64,7 +64,7 @@ const Tabs = () => {
           >
             <div className="flex items-center justify-between">
               <p className="text-xl font-semibold">{tab.content}</p>
-              <Link to={`/herramientas/historicos/herramientas/${tab.content}`}>
+              <Link to={`/menu-directivos/verherramienta/${tab.content}`}>
                 <button
                   className="bg-azul-50 hover:bg-azul-100 text-white font-medium px-6 py-2 rounded-md transition duration-300"
                   type="button"

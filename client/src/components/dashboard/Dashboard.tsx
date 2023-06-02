@@ -7,7 +7,7 @@ import {
   Docentes,
   ProyectoAula,
   PlanTrabajo,
-  HistoricoHerramientas,
+  Herramientas,
   VerHerramienta,
 } from "@/features/directivos/pages";
 
@@ -34,24 +34,21 @@ const Dashboard = () => {
             <Routes>
               <Route path="/" element={<h1>Cuadro honor</h1>} />
               <Route path="/cuadro-honor" element={<h1>Cuadro honor</h1>} />
-              <Route
-                path="/historicos/herramientas"
-                element={<h1>historico herramientas</h1>}
-              />
+              <Route path="/herramientas" element={<Herramientas />} />
               <Route
                 path="/historicos/proyecto-aula"
-                element={<h1>historico proyecto de aula</h1>}
+                element={<ProyectoAula />}
               />
               <Route
                 path="/historicos/plan-trabajo"
                 element={<h1>historico plan de trabajo</h1>}
               />
               <Route
-                path="/historicos/contenido-audiovisual"
-                element={<h1>historico contenido audiovisual</h1>}
+                path="/contenido-audiovisual"
+                element={<h1>Contenido audiovisual</h1>}
               />
-              <Route path="/docentes" element={<h1>Docentes</h1>} />
-              <Route path="/estudiantes" element={<h1>Estudiantes</h1>} />
+              <Route path="/docentes" element={<Docentes />} />
+              <Route path="/estudiantes" element={<Estudiantes />} />
               <Route path="/estadisticas" element={<h1>Estadisticas</h1>} />
             </Routes>
             {/* 

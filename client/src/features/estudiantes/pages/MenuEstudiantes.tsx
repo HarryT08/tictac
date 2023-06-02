@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { Route, Routes, useLocation } from "react-router";
-import { Dashboard } from "@/components";
+import { Dashboard } from "../components";
 
-const MenuDirectivos = () => {
+const MenuEstudiantes = () => {
   const location = useLocation();
 
   useEffect(() => {
@@ -24,4 +24,4 @@ const MenuDirectivos = () => {
   );
 };
 
-export default MenuDirectivos;
+export default MenuEstudiantes;

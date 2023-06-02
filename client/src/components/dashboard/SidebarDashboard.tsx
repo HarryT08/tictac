@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { NavLink, useLocation, Link } from "react-router-dom";
 import { SidebarLinkGroups } from "@/components";
-import { FiAward, FiFolder, FiBarChart2, FiUsers } from "react-icons/fi";
+import {FiAward, FiFolder, FiBarChart2, FiUsers, FiTool, FiGrid} from "react-icons/fi";
 import logo from "../../../public/images/TicTac.png";
 
 interface SidebarDashboardProps {
@@ -99,8 +99,8 @@ const SidebarDashboard = ({
             </svg>
           </button>
           {/* Logo */}
-          <Link to="/herramientas" className="block border-none hover:border-none">
-            <img src={logo} alt="" width={50} height={50} />
+          <Link to="/menu-directivos" className="block border-none hover:border-none">
+            <img src={logo} alt="" width={200} height={200} />
           </Link>
         </div>
 
@@ -127,7 +127,7 @@ const SidebarDashboard = ({
                 }`}
               >
                 <Link
-                  to="/herramientas/cuadro-honor"
+                  to="/menu-directivos/cuadro-honor"
                   className={`block text-slate-200 truncate transition duration-150 ${
                     pathname.includes("cuadro-honor")
                       ? "hover:text-slate-200"
@@ -203,25 +203,10 @@ const SidebarDashboard = ({
                         <ul className={`pl-9 mt-1  ${!open && "hidden"}`}>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              to="historicos/herramientas"
-                              className={`block text-gray-400 truncate transition duration-150 ${
-                                pathname ===
-                                "/herramientas/historicos/herramientas"
-                                  ? "hover:text-slate-200 text-purple-300"
-                                  : "hover:text-white"
-                              }`}
-                            >
-                              <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                                Herramientas
-                              </span>
-                            </Link>
-                          </li>
-                          <li className="mb-1 last:mb-0">
-                            <Link
                               to="historicos/proyecto-aula"
                               className={`block text-gray-400 truncate transition duration-150 ${
                                 pathname ===
-                                "/herramientas/historicos/proyecto-aula"
+                                "/menu-directivos/historicos/proyecto-aula"
                                   ? "hover:text-slate-200 text-purple-300"
                                   : "hover:text-white"
                               }`}
@@ -236,28 +221,13 @@ const SidebarDashboard = ({
                               to="historicos/plan-trabajo"
                               className={`block text-gray-400 truncate transition duration-150 ${
                                 pathname ===
-                                "/herramientas/historicos/plan-trabajo"
+                                "/menu-directivos/historicos/plan-trabajo"
                                   ? "hover:text-slate-200 text-purple-300"
                                   : "hover:text-white"
                               }`}
                             >
                               <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
                                 Plan de trabajo
-                              </span>
-                            </Link>
-                          </li>
-                          <li className="mb-1 last:mb-0">
-                            <Link
-                              to="historicos/contenido-audiovisual"
-                              className={`block text-gray-400 truncate transition duration-150 ${
-                                pathname ===
-                                "/herramientas/historicos/contenido-audiovisual"
-                                  ? "hover:text-slate-200 text-purple-300"
-                                  : "hover:text-white"
-                              }`}
-                            >
-                              <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                                Contenido audiovisual
                               </span>
                             </Link>
                           </li>
@@ -268,6 +238,64 @@ const SidebarDashboard = ({
                 }}
               </SidebarLinkGroups>
 
+              {/* Contenido audiovisual */}
+              <li
+                  className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${
+                      pathname.includes("contenido-audiovisual") && "bg-slate-900"
+                  }`}
+              >
+                <Link
+                    to="/menu-directivos/contenido-audiovisual"
+                    className={`block text-slate-200 truncate transition duration-150 ${
+                        pathname.includes("contenido-audiovisual")
+                            ? "hover:text-slate-200"
+                            : "hover:text-white"
+                    }`}
+                >
+                  <div className="flex items-center">
+                    <FiGrid
+                        className={`shrink-0 h-6 w-6 ${
+                            pathname.includes("contenido-audiovisual")
+                                ? "text-indigo-500"
+                                : "text-slate-400"
+                        }`}
+                    />
+                    <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                                Contenido audiovisual
+                    </span>
+                  </div>
+                </Link>
+              </li>
+
+              {/* Herramientas*/}
+              <li
+                  className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${
+                      pathname.includes("herramientas") && "bg-slate-900"
+                  }`}
+              >
+                <Link
+                    to="/menu-directivos/herramientas"
+                    className={`block text-slate-200 truncate transition duration-150 ${
+                        pathname.includes("herramientas")
+                            ? "hover:text-slate-200"
+                            : "hover:text-white"
+                    }`}
+                >
+                  <div className="flex items-center">
+                    <FiTool
+                        className={`shrink-0 h-6 w-6 ${
+                            pathname.includes("herramientas")
+                                ? "text-indigo-500"
+                                : "text-slate-400"
+                        }`}
+                    />
+                    <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                      Herramientas
+                    </span>
+                  </div>
+                </Link>
+              </li>
+
               {/* Docentes*/}
               <li
                 className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${
@@ -275,7 +303,7 @@ const SidebarDashboard = ({
                 }`}
               >
                 <Link
-                  to="/herramientas/docentes"
+                  to="/menu-directivos/docentes"
                   className={`block text-slate-200 truncate transition duration-150 ${
                     pathname.includes("docentes")
                       ? "hover:text-slate-200"
@@ -305,7 +333,7 @@ const SidebarDashboard = ({
               >
                 <NavLink
                   end
-                  to="/herramientas/estudiantes"
+                  to="/menu-directivos/estudiantes"
                   className={`block text-slate-200 truncate transition duration-150 ${
                     pathname.includes("estudiantes")
                       ? "hover:text-slate-200"
@@ -334,7 +362,7 @@ const SidebarDashboard = ({
                 }`}
               >
                 <Link
-                  to="/herramientas/estadisticas"
+                  to="/menu-directivos/estadisticas"
                   className={`block text-slate-200 truncate transition duration-150 ${
                     pathname.includes("estadisticas")
                       ? "hover:text-slate-200"
