@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { NavLinks } from "@/features/home/components";
 import { FiAlignRight, FiXCircle, FiLogIn } from "react-icons/fi";
-import logo from "../../../../public/images/TicTac.png";
+import logo from "../../../../public/images/Titalogo.png";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -11,7 +11,7 @@ const Navbar = () => {
     <nav className="bg-white">
       <div className="flex items-center font-medium justify-around">
         <div className="z-50 p-5 md:w-auto w-full flex justify-between">
-          <img src={logo} alt="logo" className="md:cursor-pointer h-10" />
+          <img src={logo} alt="logo" className="md:cursor-pointer" width={150}/>
           <div
             className="text-3xl md:hidden text-azul-50"
             onClick={() => setOpen(!open)}

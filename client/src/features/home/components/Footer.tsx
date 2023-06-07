@@ -11,7 +11,7 @@ const Footer = () => {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt,
             pariatur.
           </p>
-          <img src={tictac} alt="Logo Tic tac" className="w-36 h-36" />
+          <img src={tictac} alt="Logo Tic tac" width={300} />
         </div>
         <div className="col-span-1">
           <p className="text-lg md:text-xl font-bold">Informacion de contacto</p>
