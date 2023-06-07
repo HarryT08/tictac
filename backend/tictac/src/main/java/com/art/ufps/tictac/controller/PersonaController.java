@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/persona")
+@RequestMapping("/api")
 public class PersonaController {
   
   private final PersonaService personaService;
@@ -42,5 +42,11 @@ public class PersonaController {
     List<Persona> users = personaService.getAllUsers();
     if(users == null) return ResponseEntity.noContent().build();
     return ResponseEntity.ok(users);
+  }
+
+  @DeleteMapping("/admin/user/{cedula}")
+  public ResponseEntity<String> deletePersona(@RequestParam String cedula){
+    personaService.deleteUser(cedula);
+    return ResponseEntity.ok("Persona eliminada con éxito");
   }
 }

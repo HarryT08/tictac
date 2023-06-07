@@ -2,14 +2,14 @@ package com.art.ufps.tictac.service.implement;
 
 import com.art.ufps.tictac.entity.Persona;
 import com.art.ufps.tictac.repository.PersonaRepository;
-import com.art.ufps.tictac.service.IPersonaService;
+import com.art.ufps.tictac.service.PersonaInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class PersonaService implements IPersonaService {
+public class PersonaService implements PersonaInterface {
   
   private final PersonaRepository personaRepository;
   

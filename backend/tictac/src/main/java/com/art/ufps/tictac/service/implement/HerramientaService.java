@@ -36,15 +36,15 @@ public class HerramientaService implements HerramientaInterface {
     }
 
     public Optional<Herramienta> getByNombre(String nombre){
-        return herramientaRepository.findByNombre(nombre);
+        return herramientaRepository.findByNombreHerramienta(nombre);
     }
 
     public boolean existById(int id){
         return herramientaRepository.existsById(id);
     }
 
-    public boolean existByNombre(String nombre){
-        return herramientaRepository.existsByNombre(nombre);
+    public boolean existByNombre(String nombreHerramienta){
+        return herramientaRepository.existsByNombreHerramienta(nombreHerramienta);
     }
 
 }

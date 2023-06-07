@@ -4,7 +4,7 @@ import com.art.ufps.tictac.entity.Persona;
 
 import java.util.List;
 
-public interface IPersonaService {
+public interface PersonaInterface {
   
   List<Persona> getAllUsers();
   Persona getUser(String cedula);

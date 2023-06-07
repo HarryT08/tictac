@@ -34,15 +34,10 @@ public class Persona implements Serializable {
     @Basic
     @Column(name = "codigo", nullable = false, length = 30)
     private String codigo;
-    @Basic
-    @Column(name = "id_rol", nullable = false)
-    
-    @JoinTable(
-            name = "rol",
-            joinColumns = @JoinColumn(name = "id_rol"),
-            inverseJoinColumns = @JoinColumn(name = "id_rol")
-    )
-    private int idRol;
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_rol", referencedColumnName = "id_rol")
+    private Rol rol;
     
     @Basic
     @Column(name = "id_institucion", nullable = false)

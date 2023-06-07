@@ -9,7 +9,7 @@ import java.util.Optional;
 @Repository
 public interface HerramientaRepository extends JpaRepository<Herramienta, Integer> {
 
-    Optional<Herramienta> findByNombre(String nombre);
-    boolean existsByNombre(String nombre);
+    Optional<Herramienta> findByNombreHerramienta(String nombre);
+    boolean existsByNombreHerramienta(String nombreHerramienta);
 
 }
