@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+  @RequestMapping("/personas")
 public class PersonaController {
   
   private final PersonaService personaService;
@@ -31,7 +31,7 @@ public class PersonaController {
   }
   
   @GetMapping("/admin/user/{cedula}")
-  public ResponseEntity<Persona> getUser(@RequestParam String cedula) {
+  public ResponseEntity<Persona> getUser(@PathVariable("cedula")String cedula) {
     Persona user = personaService.getUser(cedula);
     if(user == null) return ResponseEntity.notFound().build();
     return ResponseEntity.ok(user);
@@ -44,7 +44,7 @@ public class PersonaController {
     return ResponseEntity.ok(users);
   }
 
-  @DeleteMapping("/admin/user/{cedula}")
+  @DeleteMapping("/admin/user/delete/{cedula}")
   public ResponseEntity<String> deletePersona(@RequestParam String cedula){
     personaService.deleteUser(cedula);
     return ResponseEntity.ok("Persona eliminada con éxito");

@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Table(name = "cursd", schema = "bd_tictac", catalog = "")
+@Table(name = "curso", schema = "bd_tictac", catalog = "")
 @Getter
 @Setter
 public class Curso implements Serializable {
