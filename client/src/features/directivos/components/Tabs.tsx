@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 const tabsData = [
   {
@@ -43,11 +43,10 @@ const Tabs = () => {
         {tabsData.map((tab, index) => (
           <li key={tab.id}>
             <button
-              className={`${
-                activeTab === index
-                  ? "bg-white text-azul-50 border-azul-50"
-                  : "bg-gray-100"
-              } text-sm px-4 py-2 text-gray-500 font-semibold uppercase border-b-2 transition duration-300`}
+              className={`${activeTab === index
+                ? "bg-white text-azul-50 border-azul-50"
+                : "bg-gray-100"
+                } text-sm px-4 py-2 text-gray-500 font-semibold uppercase border-b-2 transition duration-300`}
               onClick={() => setActiveTab(index)}
             >
               {tab.title}
@@ -75,6 +74,17 @@ const Tabs = () => {
             </div>
           </div>
         ))}
+        <div className="mt-4">
+          <Link to="/menu-directivos/crear-herramienta">
+            <button
+              className="border-2 shadow-sm rounded-md p-2"
+              style={{ color: '#000' }}>
+              <h1>
+                Crear Herramienta
+              </h1>
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
   );

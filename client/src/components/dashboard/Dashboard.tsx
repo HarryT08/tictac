@@ -9,6 +9,7 @@ import {
   PlanTrabajo,
   Herramientas,
   VerHerramienta,
+  CrearHerramientaForm,
 } from "@/features/directivos/pages";
 
 const Dashboard = () => {
@@ -50,6 +51,7 @@ const Dashboard = () => {
               <Route path="/docentes" element={<Docentes />} />
               <Route path="/estudiantes" element={<Estudiantes />} />
               <Route path="/estadisticas" element={<h1>Estadisticas</h1>} />
+              <Route path="/crear-herramienta" element={<CrearHerramientaForm />} />
             </Routes>
             {/* 
           <Route path="/historicos/herramientas/:nombre" element={<VerHerramienta/>}/>
