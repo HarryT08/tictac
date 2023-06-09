@@ -27,7 +27,7 @@ const CrearHerramientaForm = () => {
     };
 
     const eliminarFila = (indice: number) => {
-        const nuevasFilas = filas.filter((fila, i) => i !== indice);
+        const nuevasFilas = filas.filter((_fila, i) => i !== indice);
         setFilas(nuevasFilas);
     };
 
