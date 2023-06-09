@@ -1,9 +1,35 @@
 import { useState } from 'react';
 import { Header } from "@/components";
 
+interface Fila {
+    id: number;
+    proceso: string;
+    recurso: string;
+    tiempo: string;
+}
+
 const CrearHerramientaForm = () => {
     const [objectives, setObjectives] = useState('');
     const [competences, setCompetences] = useState('');
+    const [filas, setFilas] = useState<Fila[]>([]);
+
+    const agregarFila = () => {
+        setFilas([...filas, { id: filas.length + 1, proceso: '', recurso: '', tiempo: '' }]);
+    };
+
+    const actualizarFila = (indice: number, campo: keyof Fila, valor: string) => {
+        const nuevasFilas = [...filas];
+        nuevasFilas[indice] = {
+            ...nuevasFilas[indice],
+            [campo]: valor
+        };
+        setFilas(nuevasFilas);
+    };
+
+    const eliminarFila = (indice: number) => {
+        const nuevasFilas = filas.filter((fila, i) => i !== indice);
+        setFilas(nuevasFilas);
+    };
 
     const handleCompetencesChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         setCompetences(event.target.value);
@@ -48,7 +74,7 @@ const CrearHerramientaForm = () => {
     };
 
     return (
-        <div className="mt-3">
+        <div className="mt-3" >
             <Header titulo="Crear nueva herramienta" subtitulo="Formulario" />
             <form>
                 <table className='border-2' style={{ borderColor: '#b1b1b1' }}>
@@ -140,7 +166,6 @@ const CrearHerramientaForm = () => {
                                 placeholder='Escribe todo el proceso de la presentación del taller.'
                             />
                         </tr>
-                        {/* COMIENZO TABLA DINAMICA */}
                         <tr>
                             <td className='p-1 font-semibold italic'>Segundo Momento: Desarrollo de las Actividades.</td>
                             <textarea
@@ -149,7 +174,63 @@ const CrearHerramientaForm = () => {
                                 placeholder='Escribe una breve explicación general sobre el desarrollo del taller.'
                             />
                         </tr>
-                        {/* FINAL TABLA DINAMICA */}
+                    </tbody>
+                    {/* COMIENZO TABLA DINAMICA */}
+                    <tbody style={{ textAlign: 'center' }}>
+                        <tr>
+                            <td colSpan={4}>
+                                <table style={{ margin: 'auto' }}>
+                                    <thead className='border-2' style={{ borderColor: '#b1b1b1', backgroundColor: '#e3e3e3' }}>
+                                        <tr>
+                                            <th className='border-2' style={{ borderColor: '#b1b1b1' }}>Proceso</th>
+                                            <th className='border-2' style={{ borderColor: '#b1b1b1' }}>Recurso</th>
+                                            <th className='border-2' style={{ borderColor: '#b1b1b1' }}>Tiempo</th>
+                                            <th className='border-2' style={{ borderColor: '#b1b1b1' }}>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody className='border-2' style={{ borderColor: '#b1b1b1' }}>
+                                        {filas.map((fila, indice) => (
+                                            <tr key={fila.id}>
+                                                <td className='border-2' style={{ borderColor: '#b1b1b1' }}>
+                                                    <textarea
+                                                        className='font-medium'
+                                                        style={{ width: '90%', height: '120px', border: '1px solid', borderRadius: '5px', marginTop: 7, padding: '5px' }}
+                                                        placeholder='Describe el proceso paso a paso.'
+                                                        value={fila.proceso}
+                                                        onChange={(e) => actualizarFila(indice, 'proceso', e.target.value)}
+                                                    />
+                                                </td>
+                                                <td className='border-2' style={{ borderColor: '#b1b1b1' }}>
+                                                    <textarea
+                                                        className='font-medium'
+                                                        style={{ width: '90%', height: '120px', border: '1px solid', borderRadius: '5px', marginTop: 7, padding: '5px' }}
+                                                        placeholder='¿Qué recursos se necesitarán para la ejecución del taller?'
+                                                        value={fila.recurso}
+                                                        onChange={(e) => actualizarFila(indice, 'recurso', e.target.value)}
+                                                    />
+                                                </td>
+                                                <td className='border-2' style={{ borderColor: '#b1b1b1' }}>
+                                                    <textarea
+                                                        className='font-medium'
+                                                        style={{ width: '90%', height: '120px', border: '1px solid', borderRadius: '5px', marginTop: 7, padding: '5px' }}
+                                                        placeholder='¿Cuánto tiempo se empleará para la ejecución del taller?'
+                                                        value={fila.tiempo}
+                                                        onChange={(e) => actualizarFila(indice, 'tiempo', e.target.value)}
+                                                    />
+                                                </td>
+                                                <td className='border-2' style={{ borderColor: '#b1b1b1', padding: 5 }}>
+                                                    <button className="font-bold" style={{ color: "#FFF", backgroundColor: "#d71a1c", border: "1px solid", borderRadius: 3, padding: 5, borderColor: "#a31315" }} onClick={() => eliminarFila(indice)}>Eliminar</button>
+                                                </td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                                <button className="font-bold" type="button" onClick={agregarFila} style={{ marginTop: '5px', backgroundColor: "#258aff", border: "1px solid", borderRadius: 3, padding: 5, color: "#fff", borderColor: "#256cff" }}>Agregar fila</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                    {/* FINAL TABLA DINAMICA */}
+                    <tbody className='text-center'>
                         <tr>
                             <td className='p-1 font-semibold italic'>Tercer Momento: Cierre.</td>
                             <textarea
@@ -177,7 +258,14 @@ const CrearHerramientaForm = () => {
                         </tr>
                     </tbody>
                 </table>
-                <button type="submit">Agregar</button>
+                <button className="font-bold" type="submit"
+                    style={{
+                        marginTop: '5px', backgroundColor: "#1ed760",
+                        border: "1px solid", borderRadius: 3, padding: 5,
+                        color: "#fff", borderColor: "#1ed760"
+                    }}>
+                    Agregar
+                </button>
             </form>
         </div>
     );
