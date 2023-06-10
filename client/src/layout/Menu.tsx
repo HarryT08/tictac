@@ -33,9 +33,9 @@ const Menu = () => {
       <div className="container-cards">
         <CardsMenu handleOpenModal={handleOpenModal} />
         <Fab variant="extended" href="/" sx={{
-          backgroundColor: "#186ade", position: "absolute", color: "white", top: 780, right: 20, zIndex: 999,
+          backgroundColor: "#186ade", position: "absolute", color: "white", bottom: 20, right: 20, zIndex: 999,
           '&:hover': {
-            backgroundColor: "#0d4ea6",
+            backgroundColor: "#0d4ea6"
           },
         }}>
           <NavigationIcon sx={{ mr: 1 }} />
