@@ -10,6 +10,7 @@ import {
   Herramientas,
   VerHerramienta,
   CrearHerramientaForm,
+  Peticiones
 } from "@/features/directivos/pages";
 
 const Dashboard = () => {
@@ -52,10 +53,10 @@ const Dashboard = () => {
               <Route path="/estudiantes" element={<Estudiantes />} />
               <Route path="/estadisticas" element={<h1>Estadisticas</h1>} />
               <Route path="/crear-herramienta" element={<CrearHerramientaForm />} />
+              <Route path="/peticion-herramienta" element={<Peticiones />} />
+              <Route path="/verherramienta/:nombre" element={<VerHerramienta/>}/>
+              {/* cambiar que ta mal el ver herramienta */}
             </Routes>
-            {/* 
-          <Route path="/historicos/herramientas/:nombre" element={<VerHerramienta/>}/>
-           */}
           </div>
         </main>
       </div>
