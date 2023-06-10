@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { NavLink, useLocation, Link } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import {FiFolder, FiGrid, FiStar} from "react-icons/fi";
 import logo from "../../../../../public/images/TicTac.png";
 

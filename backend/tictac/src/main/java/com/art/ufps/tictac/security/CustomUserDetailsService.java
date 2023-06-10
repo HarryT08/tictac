@@ -32,6 +32,13 @@ public class CustomUserDetailsService implements UserDetailsService {
         return new User(persona.getCedula(), persona.getPassword(), setRoles(persona.getRol()));
     }
 
+    public UserDetails userData(String cedula) throws UsernameNotFoundException {
+        Persona persona = personaRepository.findByCedula(cedula)
+                .orElseThrow(() -> new UsernameNotFoundException("Usuario no encotrado"));
+
+        return new User(persona.getCedula(), persona.getPassword(), setRoles(persona.getRol()));
+    }
+
     private Collection<? extends GrantedAuthority> setRoles(Rol rol){
         Set<SimpleGrantedAuthority> authorities = new HashSet<>();
         authorities.add(new SimpleGrantedAuthority(rol.getNombre()));

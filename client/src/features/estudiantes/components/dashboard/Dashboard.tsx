@@ -2,7 +2,7 @@ import { useState } from "react";
 import { SidebarDashboard, NavbarDashboard} from "../../components";
 import { Routes, Route } from "react-router-dom";
 import { ProyectoAula } from "../../pages";
-import { Navigate } from 'react-router-dom'
+//import { Navigate } from 'react-router-dom'
 
 const Dashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
