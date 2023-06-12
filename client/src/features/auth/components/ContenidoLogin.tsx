@@ -74,12 +74,16 @@ export const FormularioLoginEstudiantesPrimariaSecundaria = () => {
       password,
     };
 
-    const u = 'http://localhost:8081/sesion/login/2';
+    const endpoint = 'http://localhost:8081/sesion/login/2';
     // Realizar la solicitud de inicio de sesión utilizando Axios
-    axios.post(u, data)
+    axios.post(endpoint, data)
         .then(response => {
-          const url = response.data;
-          navigate(url);
+          localStorage.setItem("token", response.data.token);
+          localStorage.setItem("nombre", response.data.nombre);
+          localStorage.setItem("apellido", response.data.apellido);
+          localStorage.setItem("documento", response.data.documento);
+          localStorage.setItem("rol", response.data.rol)
+          if(response.status == 200) navigate("/menu-estudiantes");
         })
         .catch(error => {
           console.log(error);
@@ -175,8 +179,12 @@ export const FormularioLoginDirectivosProfesores = () => {
     // Realizar la solicitud de inicio de sesión utilizando Axios
     axios.post(u, data)
         .then(response => {
-          const url = response.data;
-          navigate(url);
+          localStorage.setItem("token", response.data.token);
+          localStorage.setItem("nombre", response.data.nombre);
+          localStorage.setItem("apellido", response.data.apellido);
+          localStorage.setItem("documento", response.data.documento);
+          localStorage.setItem("rol", response.data.rol)
+          if(response.status == 200) navigate("/menu-docentes");
         })
         .catch(error => {
           console.log(error);
