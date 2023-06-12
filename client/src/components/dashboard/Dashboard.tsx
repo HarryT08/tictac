@@ -8,9 +8,7 @@ import {
   ProyectoAula,
   PlanTrabajo,
   Herramientas,
-  VerHerramienta,
-  CrearHerramientaForm,
-  Peticiones
+  VerHerramienta
 } from "@/features/directivos/pages";
 
 const Dashboard = () => {
@@ -47,15 +45,19 @@ const Dashboard = () => {
               />
               <Route
                 path="/contenido-audiovisual"
-                element={<h1>Contenido audiovisual</h1>}
+                element={<h1>Contenido Digital</h1>}
               />
               <Route path="/docentes" element={<Docentes />} />
               <Route path="/estudiantes" element={<Estudiantes />} />
               <Route path="/estadisticas" element={<h1>Estadisticas</h1>} />
-              <Route path="/crear-herramienta" element={<CrearHerramientaForm />} />
-              <Route path="/peticion-herramienta" element={<Peticiones />} />
               <Route path="/verherramienta/:nombre" element={<VerHerramienta/>}/>
-              {/* cambiar que ta mal el ver herramienta */}
+              {/* cambiar que ta mal el ver herramienta 
+                quitado:
+                 - peticion-herramienta --> lideres ppt
+                    <Route path="/peticion-herramienta" element={<Peticiones />} />
+                 - crear-herramienta --> docentes y lideres ppt
+                    <Route path="/crear-herramienta" element={<CrearHerramientaForm />} />
+              */}
             </Routes>
           </div>
         </main>

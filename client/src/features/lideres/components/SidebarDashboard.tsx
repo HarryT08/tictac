@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { NavLink, useLocation, Link } from "react-router-dom";
-import { SidebarLinkGroups } from "@/components";
+import { SidebarLinkGroups } from "../components";
 import { FiAward, FiFolder, FiBarChart2, FiUsers, FiTool, FiGrid } from "react-icons/fi";
-import logo from "../../../public/images/TicTac.png";
+import logo from "../../../../public/images/TicTac.png";
 
 interface SidebarDashboardProps {
   setSidebarOpen: (open: boolean) => void;
@@ -97,7 +97,7 @@ const SidebarDashboard = ({
             </svg>
           </button>
           {/* Logo */}
-          <Link to="/menu-directivos" className="block border-none hover:border-none">
+          <Link to="/menu-lideres" className="block border-none hover:border-none">
             <img src={logo} alt="" width={200} height={200} />
           </Link>
         </div>
@@ -124,7 +124,7 @@ const SidebarDashboard = ({
                   }`}
               >
                 <Link
-                  to="/menu-directivos/cuadro-honor"
+                  to="/menu-lideres/cuadro-honor"
                   className={`block text-slate-200 truncate transition duration-150 ${pathname.includes("cuadro-honor")
                       ? "hover:text-slate-200"
                       : "hover:text-white"
@@ -197,7 +197,7 @@ const SidebarDashboard = ({
                             <Link
                               to="historicos/proyecto-aula"
                               className={`block text-gray-400 truncate transition duration-150 ${pathname ===
-                                  "/menu-directivos/historicos/proyecto-aula"
+                                  "/menu-lideres/historicos/proyecto-aula"
                                   ? "hover:text-slate-200 text-purple-300"
                                   : "hover:text-white"
                                 }`}
@@ -211,7 +211,7 @@ const SidebarDashboard = ({
                             <Link
                               to="historicos/plan-trabajo"
                               className={`block text-gray-400 truncate transition duration-150 ${pathname ===
-                                  "/menu-directivos/historicos/plan-trabajo"
+                                  "/menu-lideres/historicos/plan-trabajo"
                                   ? "hover:text-slate-200 text-purple-300"
                                   : "hover:text-white"
                                 }`}
@@ -234,7 +234,7 @@ const SidebarDashboard = ({
                   }`}
               >
                 <Link
-                  to="/menu-directivos/contenido-audiovisual"
+                  to="/menu-lideres/contenido-audiovisual"
                   className={`block text-slate-200 truncate transition duration-150 ${pathname.includes("contenido-audiovisual")
                       ? "hover:text-slate-200"
                       : "hover:text-white"
@@ -289,7 +289,7 @@ const SidebarDashboard = ({
                   return (
                     <>
                       <NavLink
-                        to="/menu-directivos/herramientas"
+                        to="/menu-lideres/herramientas"
                         className={`block text-slate-200 truncate transition duration-150${pathname === "/" || pathname.includes("herramientas") || pathname.includes("crear-herramienta") || pathname.includes("peticion-herramienta")
                             ? "hover:text-slate-200"
                             : "hover:text-white"
@@ -329,15 +329,43 @@ const SidebarDashboard = ({
                         <ul className={`pl-9 mt-1  ${!open && "hidden"}`}>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              to="/menu-directivos/herramientas"
+                              to="/menu-lideres/herramientas"
                               className={`block text-gray-400 truncate transition duration-150 ${pathname ===
-                                  "/menu-directivos/herramientas"
+                                  "/menu-lideres/herramientas"
                                   ? "hover:text-slate-200 text-purple-300"
                                   : "hover:text-white"
                                 }`}
                             >
                               <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
                                 Ver Listado
+                              </span>
+                            </Link>
+                          </li>
+                          <li className="mb-1 last:mb-0">
+                            <Link
+                              to="/menu-lideres/crear-herramienta"
+                              className={`block text-gray-400 truncate transition duration-150 ${pathname ===
+                                  "/menu-lideres/crear-herramienta"
+                                  ? "hover:text-slate-200 text-purple-300"
+                                  : "hover:text-white"
+                                }`}
+                            >
+                              <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                                Crear Herramienta
+                              </span>
+                            </Link>
+                          </li>
+                          <li className="mb-1 last:mb-0">
+                            <Link
+                              to="/menu-lideres/peticion-herramienta"
+                              className={`block text-gray-400 truncate transition duration-150 ${pathname ===
+                                  "/menu-lideres/peticion-herramienta"
+                                  ? "hover:text-slate-200 text-purple-300"
+                                  : "hover:text-white"
+                                }`}
+                            >
+                              <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                                Peticiones
                               </span>
                             </Link>
                           </li>
@@ -354,7 +382,7 @@ const SidebarDashboard = ({
                   }`}
               >
                 <Link
-                  to="/menu-directivos/docentes"
+                  to="/menu-lideres/docentes"
                   className={`block text-slate-200 truncate transition duration-150 ${pathname.includes("docentes")
                       ? "hover:text-slate-200"
                       : "hover:text-white"
@@ -381,7 +409,7 @@ const SidebarDashboard = ({
               >
                 <NavLink
                   end
-                  to="/menu-directivos/estudiantes"
+                  to="/menu-lideres/estudiantes"
                   className={`block text-slate-200 truncate transition duration-150 ${pathname.includes("estudiantes")
                       ? "hover:text-slate-200"
                       : "hover:text-white"
@@ -407,7 +435,7 @@ const SidebarDashboard = ({
                   }`}
               >
                 <Link
-                  to="/menu-directivos/estadisticas"
+                  to="/menu-lideres/estadisticas"
                   className={`block text-slate-200 truncate transition duration-150 ${pathname.includes("estadisticas")
                       ? "hover:text-slate-200"
                       : "hover:text-white"

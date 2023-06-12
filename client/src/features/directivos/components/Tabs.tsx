@@ -55,11 +55,30 @@ const Tabs = () => {
         ))}
       </ul>
       <div className="mt-4">
+        {tabsData.map((tab, _index) => (
+          <div
+            className="border-2 border-gray-100 max-w-4xl shadow-sm rounded-md p-4"
+            key={tabsData[0].id}
+            hidden={activeTab !== 0}
+          >
+            <div className="flex items-center justify-between">
+              <p className="text-xl font-semibold">{tab.content}</p>
+              <Link to={`/menu-lideres/verherramienta/${tab.content}`}>
+                <button
+                  className="bg-azul-50 hover:bg-azul-100 text-white font-medium px-6 py-2 rounded-md transition duration-300"
+                  type="button"
+                >
+                  Ver
+                </button>
+              </Link>
+            </div>
+          </div>
+        ))}
         {tabsData.map((tab, index) => (
           <div
             className="border-2 border-gray-100 max-w-4xl shadow-sm rounded-md p-4"
             key={tab.id}
-            hidden={activeTab !== index}
+            hidden={activeTab !== index || activeTab === 0}
           >
             <div className="flex items-center justify-between">
               <p className="text-xl font-semibold">{tab.content}</p>
@@ -74,17 +93,6 @@ const Tabs = () => {
             </div>
           </div>
         ))}
-        <div className="mt-4">
-          <Link to="/menu-directivos/crear-herramienta">
-            <button
-              className="border-2 shadow-sm rounded-md p-2"
-              style={{ color: '#000' }}>
-              <h1>
-                Crear Herramienta
-              </h1>
-            </button>
-          </Link>
-        </div>
       </div>
     </div>
   );
