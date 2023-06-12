@@ -1,8 +1,51 @@
 import { Header } from "@/components";
 import { TableDocentes } from "@/features/directivos/components";
 import { FiSearch } from "react-icons/fi";
+import ReactModal from "react-modal";
+import {useState} from "react";
+import axios from "axios";
 
 const Docentes = () => {
+  const [modalVisible, setModalVisible] = useState(false);
+  const [file, setFile] = useState(null);
+  const handleInputChange = (event) => {
+    const selectedFile = event.target.files[0];
+    // Validar el tipo de archivo
+    if (selectedFile && selectedFile.type === 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet') {
+      setFile(selectedFile);
+    } else {
+      setFile(null);
+    }
+  };
+  const handleOpenModal = () => {
+    setModalVisible(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalVisible(false);
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (file) {
+      try {
+        const formData = new FormData();
+        formData.append('file', file);
+
+        const response = await axios.post("http://localhost:8081/personas/uploadDocentes", formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        });
+
+        console.log('Archivo enviado:', response.data);
+      } catch (error) {
+        console.error('Error al enviar el archivo:', error);
+      }
+    }
+    handleCloseModal();
+  };
+
   return (
     <div className="mt-3">
       <Header titulo="Docentes" subtitulo="Listado" />
@@ -34,11 +77,61 @@ const Docentes = () => {
             </div>
           </div>
           <button
-            type="button"
-            className="bg-azul-50 hover:bg-azul-100 text-white font-medium rounded-lg h-max p-3"
-          >
+            type="button" onClick={handleOpenModal}
+            className="bg-azul-50 hover:bg-azul-100 text-white font-medium rounded-lg h-max p-3">
             Cargar docentes
           </button>
+          <ReactModal
+              isOpen={modalVisible}
+              onRequestClose={handleCloseModal}
+              // Otras propiedades del modal
+              style={{
+                overlay: {
+                  backgroundColor: 'rgba(255, 255, 255, 0.5)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                },
+                content: {
+                  top: '50%',
+                  left: '50%',
+                  transform: 'translate(-50%, -50%)',
+                  width: '450px',
+                  height: '200px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                },
+              }}
+          >
+            {/* Contenido del modal */}
+            <h1 style={{fontSize: '24px', marginBottom: '16px'}}>Cargar docentes</h1>
+            <form onSubmit={handleSubmit} style={{
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center'
+            }}>
+              <label>
+                <input name={"file"} id={"file"} type="file" onChange={handleInputChange}
+                       className="bg-gray-100 border border-gray-300 rounded-lg p-1 mt-1"/>
+              </label>
+              <div style={{
+                width: '50%',
+                display: 'flex',
+                justifyContent: 'space-around',
+                marginTop: '16px'
+              }}>
+                <button type="submit"
+                        className="bg-green-500 hover:bg-green-300 text-white font-medium rounded-lg h-max p-2">Enviar
+                </button>
+                <button onClick={handleCloseModal}
+                        className="bg-red-500 hover:bg-red-300 text-white font-medium rounded-lg h-max p-2">Cancelar
+                </button>
+              </div>
+            </form>
+          </ReactModal>
         </div>
         <TableDocentes />
       </div>

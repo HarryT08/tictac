@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@types/node": "^18.15.12",
+    "@types/react-modal": "^3.16.0",
     "axios": "^1.4.0",
     "jsonwebtoken": "^9.0.0",
     "jwt-decode": "^3.1.2",
@@ -19,6 +20,7 @@
     "react-hook-form": "^7.43.9",
     "react-icons": "^4.8.0",
     "react-material-ui-carousel": "^3.4.2",
+    "react-modal": "^3.16.1",
     "react-paginate": "^8.2.0",
     "react-router": "^6.10.0",
     "react-router-dom": "^6.10.0",

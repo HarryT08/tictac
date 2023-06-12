@@ -14,7 +14,7 @@ import java.util.Objects;
 public class Docente implements Serializable {
     
     //Ese generatedValue no falla? El id es un string no un int
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id_docente", nullable = false, length = 50)
     private String idDocente;

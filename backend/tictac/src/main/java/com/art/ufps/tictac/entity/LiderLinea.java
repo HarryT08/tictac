@@ -1,5 +1,6 @@
 package com.art.ufps.tictac.entity;
 
+import com.art.ufps.tictac.dto.ClaveCompuesta;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,12 +12,13 @@ import java.sql.Date;
 @Table(name = "lider_linea", schema = "bd_tictac", catalog = "")
 @Getter
 @Setter
+@IdClass(ClaveCompuesta.class)
 public class LiderLinea implements Serializable {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id_docente", nullable = false, length = 50)
     private String idDocente;
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id_linea", nullable = false)
     private int idLinea;

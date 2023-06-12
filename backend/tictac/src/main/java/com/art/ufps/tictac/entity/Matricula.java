@@ -12,7 +12,7 @@ import java.util.Objects;
 @Getter
 @Setter
 public class Matricula implements Serializable {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id_estudiante", nullable = false, length = 50)
     private String idEstudiante;
