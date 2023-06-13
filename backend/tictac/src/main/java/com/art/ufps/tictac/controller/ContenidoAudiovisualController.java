@@ -36,8 +36,8 @@ public class ContenidoAudiovisualController {
         this.personaInterface = personaInterface;
     }
 
-    @GetMapping("/list")
-    public ResponseEntity<List<FormContenido>> list(){
+    @GetMapping("/list/{ruta}")
+    public ResponseEntity<List<FormContenido>> list(@PathVariable("ruta")String ruta, @RequestParam("eje") String eje){
         List<FormContenido> list = new ArrayList<>();
 
         List<RecursoContenido> buscador = recursoContenidoRepository.findAll();
@@ -56,15 +56,39 @@ public class ContenidoAudiovisualController {
                     .findFirst()
                     .orElse(null);
 
-            if (contenidoAudiovisual != null && recurso != null){
+            String tipo;
+            switch (eje) {
+                case "1":
+                    tipo = "Relaciones sociales y prácticas cívicas";
+                    break;
+                case "2":
+                    tipo = "Sexualidad y construcción de ciudadanía";
+                    break;
+                case "3":
+                    tipo = "Educación Ambiental";
+                    break;
+                case "4":
+                    tipo = "Emprendimiento";
+                    break;
+                case "5":
+                    tipo = "Tecnologías de Información y Comunicación";
+                    break;
+                default:
+                    tipo = "1";
+                    break;
+            }
+
+            if (contenidoAudiovisual != null && recurso != null && recurso.getTipo().equals(tipo)){
                 formContenido.setTitulo(contenidoAudiovisual.getNombreContenido());
                 formContenido.setUrl(recurso.getUrl());
                 formContenido.setVisibilidad(String.valueOf(contenidoAudiovisual.getVisibilidad()));
                 formContenido.setTipo(recurso.getTipo());
                 Persona persona = personaInterface.getUser(contenidoAudiovisual.getDocenteAutor());
                 formContenido.setAutor(persona.getNombre() + " " + persona.getApellido());
-
-                list.add(formContenido);
+                if (ruta.equals("home") && contenidoAudiovisual.getVisibilidad() == 1){
+                    list.add(formContenido);
+                }
+                else if (ruta.equals("institucion")){list.add(formContenido);}
             }
         }
 
@@ -86,8 +110,32 @@ public class ContenidoAudiovisualController {
         contenidoAudiovisual.setDocenteAutor(formContenido.getAutor());
         //contenidoAudiovisualInterface.save(contenidoAudiovisual);
 
+        String tipo = formContenido.getTipo();
+        String nombre;
+
+        switch (tipo) {
+            case "1":
+                nombre = "Relaciones sociales y prácticas cívicas";
+                break;
+            case "2":
+                nombre = "Sexualidad y construcción de ciudadanía";
+                break;
+            case "3":
+                nombre = "Educación Ambiental";
+                break;
+            case "4":
+                nombre = "Emprendimiento";
+                break;
+            case "5":
+                nombre = "Tecnologías de Información y Comunicación";
+                break;
+            default:
+                nombre = "No aplica";
+                break;
+        }
+
         recurso.setNombre(formContenido.getTitulo());
-        recurso.setTipo(formContenido.getTipo());
+        recurso.setTipo(nombre);
         recurso.setUrl(formContenido.getUrl());
         //recursoRepository.save(recurso);
 

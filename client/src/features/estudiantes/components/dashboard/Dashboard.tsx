@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { SidebarDashboard, NavbarDashboard} from "../../components";
 import { Routes, Route } from "react-router-dom";
-import { ProyectoAula } from "../../pages";
+import { ProyectoAula, Digitales } from "../../pages";
 //import { Navigate } from 'react-router-dom'
 
 const Dashboard = () => {
@@ -27,7 +27,7 @@ const Dashboard = () => {
             <Routes>
                 <Route path="/" element={<ProyectoAula />} />
                 <Route path="/proyecto-aula" element={<ProyectoAula />} />
-                <Route path="/contenido-audiovisual" element={<h1>Contenidos audiovisuales</h1>} />
+                <Route path="/contenido-audiovisual" element={<Digitales />} />
             </Routes>
             {/* 
           <Route path="/historicos/herramientas/:nombre" element={<VerHerramienta/>}/>

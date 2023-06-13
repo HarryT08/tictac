@@ -47,6 +47,9 @@ const Navbar = () => {
         rol = "lider";
         plural = "es"
     }
+    else if(localStorage.getItem("rol") == "Admin"){
+        rol = "directivo";
+    }
     return (
         <nav className="bg-white">
             <div className="flex items-center font-medium justify-around">

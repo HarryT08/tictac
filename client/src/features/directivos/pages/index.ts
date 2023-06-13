@@ -7,3 +7,4 @@ export { default as Herramientas } from "./Herramientas.tsx";
 export { default as VerHerramienta } from "./VerHerramienta";
 export { default as CrearHerramientaForm } from "./CrearHerramientaForm";
 export { default as Peticiones } from "./Peticiones";
+export { default as Digitales } from "./Digitales";

@@ -8,7 +8,8 @@ import {
   ProyectoAula,
   PlanTrabajo,
   Herramientas,
-  VerHerramienta
+  VerHerramienta,
+    Digitales
 } from "@/features/directivos/pages";
 
 const Dashboard = () => {
@@ -45,7 +46,7 @@ const Dashboard = () => {
               />
               <Route
                 path="/contenido-audiovisual"
-                element={<h1>Contenido Digital</h1>}
+                element={<Digitales />}
               />
               <Route path="/docentes" element={<Docentes />} />
               <Route path="/estudiantes" element={<Estudiantes />} />

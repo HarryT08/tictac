@@ -9,15 +9,53 @@ const Digitales = () => {
     const [open, setOpen] = React.useState(false);
     const autor = localStorage.getItem("documento");
     const [titulo, setTitulo] = useState('');
+    const [tipo, setTipo] = useState('1');
     const [visibilidad, setVisibilidad] = useState('0');
     const [url, setUrl] = useState('');
 
+    const [activeTab, setActiveTab] = useState(0);
+    const [eje, setEje] = useState('1');
+
     const [isLoading, setIsLoading] = useState(true);
     const [rows, setRows] = useState([]);
+
+    const tabsData = [
+        {id: 1,title: "Relaciones sociales y practicas cívicas",},
+        {id: 2,title: "Sexualidad y construcción de ciudadanía",},
+        {id: 3,title: "Educación ambiental",},
+        {id: 4,title: "Emprendimiento",},
+        {id: 5,title: "TIC",},
+    ];
+
+    const handleTabClick = (id) => {
+        setActiveTab(id-1);
+        setIsLoading(true);
+        switch (id) {
+            case 1:
+                setEje("1");
+                break;
+            case 2:
+                setEje("2");
+                break;
+            case 3:
+                setEje("3");
+                break;
+            case 4:
+                setEje("4");
+                break;
+            case 5:
+                setEje("5");
+                break;
+            default:
+                setEje("1");
+                break;
+        }
+    };
+
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`http://localhost:8081/contenido/list`);
+                const response = await axios.get(`http://localhost:8081/contenido/list/institucion?eje=${eje}`);
                 const data = response.data.map((item) => ({
                     titulo: item.titulo,
                     visibilidad: item.visibilidad,
@@ -34,7 +72,7 @@ const Digitales = () => {
         };
 
         fetchData();
-    }, []);
+    }, [eje]);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -43,12 +81,13 @@ const Digitales = () => {
             visibilidad: visibilidad,
             autor: autor,
             url: url,
-            tipo: "Contenido digital"
+            tipo: tipo
         };
         try {
             const response = await axios.post("http://localhost:8081/contenido/create", formData);
 
             setTitulo("");
+            setTipo("1");
             setUrl("");
             setVisibilidad("0");
 
@@ -117,51 +156,11 @@ const Digitales = () => {
             transition: '.3s'
         },
     });
-    {/*
-    const contenidos = [
-        {
-            id: 1,
-            titulo: "Cuidado del Medio Ambiente",
-            descripcion: "Portal informativo y práctico sobre conservación ambiental, energías renovables y prácticas sostenibles para un futuro más verde y equilibrado.",
-            poblacion: ['Preescolar, ', 'Básica Primaria, ', 'Básica Secundaria y Media'],
-            url: "https://www.youtube.com/watch?",
-        },
-        {
-            id: 2,
-            titulo: "Sexualidad Saludable",
-            descripcion: "Recursos y consejos para promover una sexualidad saludable y consciente en todos los aspectos de la vida.",
-            poblacion: ['Básica Secundaria y Media'],
-            url: "https://www.youtube.com/watch?",
-        },
-        {
-            id: 3,
-            titulo: "Formación en el Hogar",
-            descripcion: "Guía práctica para la formación y comportamiento responsable en el hogar, promoviendo hábitos positivos y sostenibles para un entorno familiar armonioso.",
-            poblacion: ['Preescolar, ', 'Básica Primaria'],
-            url: "https://www.youtube.com/watch?",
-        },
-        {
-            id: 4,
-            titulo: "Formación en el Hogar",
-            descripcion: "Guía práctica para la formación y comportamiento responsable en el hogar, promoviendo hábitos positivos y sostenibles para un entorno familiar armonioso.",
-            poblacion: ['Preescolar, ', 'Básica Primaria'],
-            url: "https://www.youtube.com/watch?",
-        },
-        {
-            id: 5,
-            titulo: "Formación en el Hogar",
-            descripcion: "Guía práctica para la formación y comportamiento responsable en el hogar, promoviendo hábitos positivos y sostenibles para un entorno familiar armonioso.",
-            poblacion: ['Preescolar, ', 'Básica Primaria'],
-            url: "https://www.youtube.com/watch?",
-        },
-    ];
-    */
-    }
 
     return (
         <div>
             <Header titulo="Contenidos Digitales" subtitulo="Listado"/>
-            <button style={{border: "1px solid", borderRadius: 5, padding: 0, marginInlineStart: 15}}
+            <button style={{padding: 20, marginInlineStart: 15}}
                     onClick={handleOpen}>
                 <Cardcito>
                     <CardContent>
@@ -171,7 +170,70 @@ const Digitales = () => {
                     </CardContent>
                 </Cardcito>
             </button>
+            <div className="w-full">
+                <ul className="flex">
+                    {tabsData.map((tab, index) => (
+                        <li key={tab.id}>
+                            <button
+                                className={`${activeTab === index
+                                    ? "bg-white text-azul-50 border-azul-50"
+                                    : "bg-gray-100"
+                                } text-sm px-4 py-2 text-gray-500 font-semibold uppercase border-b-2 transition duration-300`}
+                                //onClick={() => setActiveTab(index)}
+                                onClick={() => handleTabClick(tab.id)}
+                            >
+                                {tab.title}
+                            </button>
+                        </li>
+                    ))}
+                </ul>
+                <div className="mt-4" >
+                    <div>
+                        {isLoading ? (
+                            <p>Cargando datos...</p>
+                        ) : (
+                            rows.length == 0 ? (
+                                <p>No se encontraron herramientas...</p>
+                            ) : (
+                                <div style={{
+                                    display: 'flex',
+                                    flexDirection: 'row',
+                                    alignItems: 'center',
+                                    flexWrap: 'wrap'
+                                }}>
+                                    {rows.map((tab, _index) => (
+                                        <div style={{flexBasis: '25%', flexGrow: 0}}>
+                                            <Cardcito sx={{width: 350, minHeight: 100, margin: 2, alignItems: 'center'}}>
+                                                <a href={tab.url} target="_blank">
+                                                    <CardContent>
+                                                        <Typography sx={{fontSize: 14}} gutterBottom>
+                                                            {tab.tipo}
+                                                        </Typography>
+                                                        <Typography variant="h5" component="div">
+                                                            {tab.titulo}
+                                                        </Typography>
+                                                        <Typography sx={{mb: 1.5, fontSize: 15}} variant="caption">
+                                                            {tab.autor}
+                                                        </Typography>
+                                                        {/*
+                                        <Typography variant="body2">
+                                            {tab.descripcion}
+                                            <br/>
+                                        </Typography>
+                                        */}
+                                                    </CardContent>
+                                                </a>
+                                            </Cardcito>
+                                        </div>
+                                    ))}
+                                </div>
+                            )
+                        )}
+                    </div>
+                </div>
+            </div>
             <div className="mt-3">
+                {/*
                 <div>
                     {isLoading ? (
                         <p>Cargando datos...</p>
@@ -201,7 +263,7 @@ const Digitales = () => {
                                             {tab.descripcion}
                                             <br/>
                                         </Typography>
-                                        */}
+
                                             </CardContent>
                                         </a>
                                     </Cardcito>
@@ -210,6 +272,7 @@ const Digitales = () => {
                         </div>
                     )}
                 </div>
+                */}
 
                 <Modal
                     open={open}
@@ -230,6 +293,17 @@ const Digitales = () => {
                             <textarea name="" id="" cols={30} rows={3} style={bordes} />
                         </div>
                         */}
+                            <div style={margintop}>
+                                <p><b>Eje</b></p>
+                                <select required={true} value={tipo}
+                                        onChange={(e) => setTipo(e.target.value)} style={bordes}>
+                                    <option value="1">1. Relaciones sociales y prácticas cívicas </option>
+                                    <option value="2">2. Sexualidad y construcción de ciudadanía</option>
+                                    <option value="3">3. Educación Ambiental</option>
+                                    <option value="4">4. Emprendimiento</option>
+                                    <option value="5">5. Tecnologías de Información y Comunicación</option>
+                                </select>
+                            </div>
                             <div style={margintop}>
                                 <p><b>Visibilidad</b></p>
                                 <select required={true} value={visibilidad}
