@@ -8,6 +8,17 @@ import axios from "axios";
 const Docentes = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [file, setFile] = useState(null);
+
+  const [idLinea, setIdLinea] = useState("0");
+  const [esLider, setEsLider] = useState("0");
+
+  const handleIdLineaChange = (event) => {
+    setIdLinea(event.target.value);
+  };
+
+  const handleEsLiderChange = (event) => {
+    setEsLider(event.target.value);
+  };
   const handleInputChange = (event) => {
     const selectedFile = event.target.files[0];
     // Validar el tipo de archivo
@@ -53,6 +64,7 @@ const Docentes = () => {
         <div className="flex justify-between items-center">
           <div className="flex gap-10">
             {/* Barra busqueda nombre */}
+            {/*
             <div>
               <p className="font-medium">Nombre docente</p>
               <div className="flex items-center gap-2 focus:outline-none rounded-lg border border-gray-300 hover:bg-gray-100 bg-white mt-2">
@@ -66,13 +78,33 @@ const Docentes = () => {
                 />
               </div>
             </div>
-
-            {/* Select filter by year */}
+            */}
+            {/* Select filter by idLinea */}
             <div>
-              <p className="font-medium">Año</p>
-              <select className="appearance-none bg-white border border-gray-300 py-2 px-4 pr-8 rounded-lg cursor-pointer hover:bg-gray-100 focus:outline-none focus:shadow-outline mt-2">
-                <option value="1">2023</option>
-                <option value="2">2022</option>
+              <p className="font-medium">Linea Transversal</p>
+              <select className="appearance-none bg-white border border-gray-300 py-2 px-4 pr-8 rounded-lg cursor-pointer hover:bg-gray-100 focus:outline-none focus:shadow-outline mt-2"
+                      value={idLinea}
+                      onChange={handleIdLineaChange}
+              >
+                <option value="0">Seleccione una Linea Transversal</option>
+                <option value="1">1. Relaciones sociales y prácticas cívicas </option>
+                <option value="2">2. Sexualidad y construcción de ciudadanía</option>
+                <option value="3">3. Educación Ambiental</option>
+                <option value="4">4. Emprendimiento</option>
+                <option value="5">5. Tecnologías de Información y Comunicación</option>
+              </select>
+            </div>
+
+            {/* Select filter by esLider */}
+            <div>
+              <p className="font-medium">Tipo de docente</p>
+              <select className="appearance-none bg-white border border-gray-300 py-2 px-4 pr-8 rounded-lg cursor-pointer hover:bg-gray-100 focus:outline-none focus:shadow-outline mt-2"
+                      value={esLider}
+                      onChange={handleEsLiderChange}
+              >
+                <option className="" value="0">Seleccione un tipo de docente</option>
+                <option className="" value="2">Lider PPT</option>
+                <option className="" value="3">Docente</option>
               </select>
             </div>
           </div>
@@ -133,7 +165,7 @@ const Docentes = () => {
             </form>
           </ReactModal>
         </div>
-        <TableDocentes />
+        <TableDocentes idLinea={idLinea} esLider={esLider}/>
       </div>
     </div>
   );

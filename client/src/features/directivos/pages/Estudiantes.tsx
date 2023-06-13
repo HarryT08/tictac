@@ -2,12 +2,23 @@ import {Header} from "@/components";
 import {TableEstudiantes} from "@/features/directivos/components";
 import {FiSearch} from "react-icons/fi";
 import ReactModal from "react-modal";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import axios from "axios";
 
 const Estudiantes = () => {
     const [modalVisible, setModalVisible] = useState(false);
     const [file, setFile] = useState(null);
+
+    const [grado, setGrado] = useState("0");
+    const [anoLectivo, setAnoLectivo] = useState("0");
+
+    const handleGradoChange = (event) => {
+        setGrado(event.target.value);
+    };
+
+    const handleAnoLectivoChange = (event) => {
+        setAnoLectivo(event.target.value);
+    };
     const handleInputChange = (event) => {
         const selectedFile = event.target.files[0];
         // Validar el tipo de archivo
@@ -53,6 +64,7 @@ const Estudiantes = () => {
                 <div className="flex justify-between items-center">
                     <div className="flex gap-10">
                         {/* Barra busqueda nombre */}
+                        {/*
                         <div>
                             <p className="font-medium">Nombre estudiante</p>
                             <div
@@ -67,14 +79,28 @@ const Estudiantes = () => {
                                 />
                             </div>
                         </div>
+                        */}
 
                         {/* Select filter by course */}
                         <div>
                             <p className="font-medium">Grado</p>
                             <select
-                                className="appearance-none bg-white border border-gray-300 py-2 px-4 pr-8 rounded-lg cursor-pointer hover:bg-gray-100 focus:outline-none focus:shadow-outline mt-2">
-                                <option value="1">11A</option>
-                                <option value="2">11B</option>
+                                className="appearance-none bg-white border border-gray-300 py-2 px-4 pr-8 rounded-lg cursor-pointer hover:bg-gray-100 focus:outline-none focus:shadow-outline mt-2"
+                                value={grado}
+                                onChange={handleGradoChange}
+                            >
+                                <option value="0">Seleccione un curso</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
                             </select>
                         </div>
 
@@ -82,11 +108,17 @@ const Estudiantes = () => {
                         <div>
                             <p className="font-medium">Año</p>
                             <select
-                                className="appearance-none bg-white border border-gray-300 py-2 px-4 pr-8 rounded-lg cursor-pointer hover:bg-gray-100 focus:outline-none focus:shadow-outline mt-2">
-                                <option className="" value="1">
+                                className="appearance-none bg-white border border-gray-300 py-2 px-4 pr-8 rounded-lg cursor-pointer hover:bg-gray-100 focus:outline-none focus:shadow-outline mt-2"
+                                value={anoLectivo}
+                                onChange={handleAnoLectivoChange}
+                            >
+                                <option className="" value="0">
+                                    Seleccione un año
+                                </option>
+                                <option className="" value="2023">
                                     2023
                                 </option>
-                                <option className="" value="2">
+                                <option className="" value="2022">
                                     2022
                                 </option>
                             </select>
@@ -148,7 +180,7 @@ const Estudiantes = () => {
                         </form>
                     </ReactModal>
                 </div>
-                <TableEstudiantes/>
+                <TableEstudiantes grado={grado} anoLectivo={anoLectivo}/>
             </div>
         </div>
     );

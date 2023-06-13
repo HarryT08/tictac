@@ -1,16 +1,19 @@
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import { FiEye, FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import ReactPaginate from "react-paginate";
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
+import axios from "axios";
 
 const columns = [
-  { id: "nombre", label: "Nombre estudiante" },
-  { id: "fechaIngreso", label: "Fecha Ingreso" },
-  { id: "fechaSalida", label: "Fecha Salida" },
-  { id: "acciones", label: "Acciones" },
+  { id: "documento", label: "Documento" },
+  { id: "nombre", label: "Nombre" },
+  { id: "apellido", label: "Apellido" },
+  //{ id: "fechaIngreso", label: "Fecha Ingreso" },
+  //{ id: "fechaSalida", label: "Fecha Salida" },
+  //{ id: "acciones", label: "Acciones" },
 ];
-
+{/*
 const rows = [
   {
     id: 1,
@@ -73,14 +76,49 @@ const rows = [
     fechaSalida: "2021-01-01",
   },
 ];
+*/}
 
-const TableDocentes = () => {
+const TableDocentes = ({ idLinea, esLider }) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(5);
+
+  const [rows, setRows] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setIsLoading(true);
+        const response = await axios.get(`http://localhost:8081/docente/list?idLinea=${idLinea}&esLider=${esLider}`);
+        const data = response.data.map((item) => ({
+          id: item.cedula,
+          nombre: item.nombre,
+          apellido: item.apellido,
+          // fechaIngreso: item.fechaIngreso,
+          // fechaSalida: item.fechaSalida,
+        }));
+        setRows(data);
+      } catch (error) {
+        console.error("Error al obtener los datos:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [idLinea, esLider]);
 
   const indexOfLastItem = (currentPage + 1) * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = rows.slice(indexOfFirstItem, indexOfLastItem);
+
+  if (isLoading) {
+    return <p>Cargando...</p>;
+  }
+
+  if (rows.length == 0){
+    return <p>No se encontraron registros</p>;
+  }
 
   return (
     <>
@@ -95,17 +133,21 @@ const TableDocentes = () => {
           </tr>
         </thead>
         <tbody className="rounded-b-lg">
-          {currentItems.map((row) => (
+          {rows.map((row) => (
             <tr
               key={row.id}
               className="text-center hover:bg-slate-50 transition duration-200"
             >
               <td className="p-3 border-b border-[rgba(230,232,240,0.5)]">
+                <p>{row.id}</p>
+              </td>
+              <td className="p-3 border-b border-[rgba(230,232,240,0.5)]">
                 <p>{row.nombre}</p>
               </td>
               <td className="p-3 border-b border-[rgba(230,232,240,0.5)]">
-                <p>{row.fechaIngreso}</p>
+                <p>{row.apellido}</p>
               </td>
+              {/*
               <td className="p-3 border-b border-[rgba(230,232,240,0.5)]">
                 <p>{row.fechaSalida}</p>
               </td>
@@ -118,6 +160,7 @@ const TableDocentes = () => {
                   <FiEye className="m-auto text-[#ffe100]" />
                 </button>
               </td>
+              */}
             </tr>
           ))}
         </tbody>

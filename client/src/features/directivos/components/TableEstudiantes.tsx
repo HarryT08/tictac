@@ -1,98 +1,137 @@
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import { FiEdit2, FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import ReactPaginate from "react-paginate";
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
+import axios from "axios";
 
 const columns = [
-  { id: "nombre", label: "Nombre estudiante" },
+  { id: "documento", label: "Documento" },
+  { id: "nombre", label: "Nombre" },
+  { id: "apellido", label: "Apellido" },
   { id: "grado", label: "Grado" },
-  { id: "fechaIngreso", label: "Fecha Ingreso" },
-  { id: "fechaSalida", label: "Fecha Salida" },
-  { id: "acciones", label: "Acciones" },
+  { id: "ano_lectivo", label: "Año lectivo" }
+  //{ id: "fechaIngreso", label: "Fecha Ingreso" },
+  //{ id: "fechaSalida", label: "Fecha Salida" },
+  //{ id: "acciones", label: "Acciones" },
 ];
-
+{/*
 const rows = [
   {
-    id: 1,
+    id: 1151898,
     nombre: "Juan",
+    apellido: "Sanchez",
     grado: "11B",
-    fechaIngreso: "2021-01-01",
-    fechaSalida: "2021-01-01",
+    ano_lectivo: 2017,
+    //fechaIngreso: "2021-01-01",
+    //fechaSalida: "2021-01-01",
   },
   {
-    id: 2,
-    nombre: "Pedro",
-    grado: "11C",
-    fechaIngreso: "2021-01-01",
-    fechaSalida: "2021-01-01",
-  },
-  {
-    id: 3,
-    nombre: "Sandra",
-    grado: "10A",
-    fechaIngreso: "2021-01-01",
-    fechaSalida: "2021-01-01",
-  },
-  {
-    id: 4,
-    nombre: "Maria",
-    grado: "9B",
-    fechaIngreso: "2021-01-01",
-    fechaSalida: "2021-01-01",
-  },
-  {
-    id: 5,
+    id: 1151898,
     nombre: "Juan",
+    apellido: "Sanchez",
     grado: "11B",
-    fechaIngreso: "2021-01-01",
-    fechaSalida: "2021-01-01",
+    ano_lectivo: 2017,
+    //fechaIngreso: "2021-01-01",
+    //fechaSalida: "2021-01-01",
   },
   {
-    id: 6,
-    nombre: "Pedro",
-    grado: "11C",
-    fechaIngreso: "2021-01-01",
-    fechaSalida: "2021-01-01",
-  },
-  {
-    id: 7,
-    nombre: "Sandra",
-    grado: "10A",
-    fechaIngreso: "2021-01-01",
-    fechaSalida: "2021-01-01",
-  },
-  {
-    id: 8,
-    nombre: "Maria",
-    grado: "9B",
-    fechaIngreso: "2021-01-01",
-    fechaSalida: "2021-01-01",
-  },
-  {
-    id: 9,
+    id: 1151898,
     nombre: "Juan",
+    apellido: "Sanchez",
     grado: "11B",
-    fechaIngreso: "2021-01-01",
-    fechaSalida: "2021-01-01",
+    ano_lectivo: 2017,
+    //fechaIngreso: "2021-01-01",
+    //fechaSalida: "2021-01-01",
   },
   {
-    id: 10,
-    nombre: "Pedro",
-    grado: "11C",
-    fechaIngreso: "2021-01-01",
-    fechaSalida: "2021-01-01",
+    id: 1151898,
+    nombre: "Juan",
+    apellido: "Sanchez",
+    grado: "11B",
+    ano_lectivo: 2017,
+    //fechaIngreso: "2021-01-01",
+    //fechaSalida: "2021-01-01",
+  },
+  {
+    id: 1151898,
+    nombre: "Juan",
+    apellido: "Sanchez",
+    grado: "11B",
+    ano_lectivo: 2017,
+    //fechaIngreso: "2021-01-01",
+    //fechaSalida: "2021-01-01",
+  },
+  {
+    id: 1151898,
+    nombre: "Juan",
+    apellido: "Sanchez",
+    grado: "11B",
+    ano_lectivo: 2017,
+    //fechaIngreso: "2021-01-01",
+    //fechaSalida: "2021-01-01",
+  },
+  {
+    id: 1151898,
+    nombre: "Juan",
+    apellido: "Sanchez",
+    grado: "11B",
+    ano_lectivo: 2017,
+    //fechaIngreso: "2021-01-01",
+    //fechaSalida: "2021-01-01",
+  },
+  {
+    id: 1151898,
+    nombre: "Juan",
+    apellido: "Sanchez",
+    grado: "11B",
+    ano_lectivo: 2017,
+    //fechaIngreso: "2021-01-01",
+    //fechaSalida: "2021-01-01",
   },
 ];
-
-const TableEstudiantes = () => {
+*/}
+const TableEstudiantes =  ({ grado, anoLectivo }) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(5);
+  const [rows, setRows] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setIsLoading(true);
+        const response = await axios.get(`http://localhost:8081/estudiante/list?grado=${grado}&anio=${anoLectivo}`);
+        const data = response.data.map((item) => ({
+          id: item.cedula,
+          nombre: item.nombre,
+          apellido: item.apellido,
+          grado: item.id_curso,
+          ano_lectivo: item.ano_lectivo,
+          // fechaIngreso: item.fechaIngreso,
+          // fechaSalida: item.fechaSalida,
+        }));
+        setRows(data);
+      } catch (error) {
+        console.error("Error al obtener los datos:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [grado, anoLectivo]);
 
   const indexOfLastItem = (currentPage + 1) * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = rows.slice(indexOfFirstItem, indexOfLastItem);
 
+  if (isLoading) {
+    return <p>Cargando...</p>;
+  }
+  if (rows.length == 0){
+    return <p>No se encontraron registros</p>;
+  }
   return (
     <>
       <table className="w-full mt-4 border">
@@ -106,23 +145,34 @@ const TableEstudiantes = () => {
           </tr>
         </thead>
         <tbody className="rounded-b-lg">
-          {currentItems.map((row) => (
+          {rows.map((row) => (
             <tr
               key={row.id}
               className="text-center hover:bg-slate-50 transition duration-200"
             >
               <td className="p-3 border-b border-[rgba(230,232,240,0.5)]">
+                <p>{row.id}</p>
+              </td>
+              <td className="p-3 border-b border-[rgba(230,232,240,0.5)]">
                 <p>{row.nombre}</p>
+              </td>
+              <td className="p-3 border-b border-[rgba(230,232,240,0.5)]">
+                <p>{row.apellido}</p>
               </td>
               <td className="p-3 border-b border-[rgba(230,232,240,0.5)]">
                 <p>{row.grado}</p>
               </td>
+              <td className="p-3 border-b border-[rgba(230,232,240,0.5)]">
+                <p>{row.ano_lectivo}</p>
+              </td>
+              {/*
               <td className="p-3 border-b border-[rgba(230,232,240,0.5)]">
                 <p>{row.fechaIngreso}</p>
               </td>
               <td className="p-3 border-b border-[rgba(230,232,240,0.5)]">
                 <p>{row.fechaSalida}</p>
               </td>
+
               <td className="p-3 border-b border-[rgba(230,232,240,0.5)]">
                 <button
                   id="button-edit"
@@ -132,6 +182,7 @@ const TableEstudiantes = () => {
                   <FiEdit2 className="m-auto text-[#ffe100]" />
                 </button>
               </td>
+              */}
             </tr>
           ))}
         </tbody>
