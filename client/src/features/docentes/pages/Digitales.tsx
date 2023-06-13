@@ -117,46 +117,6 @@ const Digitales = () => {
             transition: '.3s'
         },
     });
-    {/*
-    const contenidos = [
-        {
-            id: 1,
-            titulo: "Cuidado del Medio Ambiente",
-            descripcion: "Portal informativo y práctico sobre conservación ambiental, energías renovables y prácticas sostenibles para un futuro más verde y equilibrado.",
-            poblacion: ['Preescolar, ', 'Básica Primaria, ', 'Básica Secundaria y Media'],
-            url: "https://www.youtube.com/watch?",
-        },
-        {
-            id: 2,
-            titulo: "Sexualidad Saludable",
-            descripcion: "Recursos y consejos para promover una sexualidad saludable y consciente en todos los aspectos de la vida.",
-            poblacion: ['Básica Secundaria y Media'],
-            url: "https://www.youtube.com/watch?",
-        },
-        {
-            id: 3,
-            titulo: "Formación en el Hogar",
-            descripcion: "Guía práctica para la formación y comportamiento responsable en el hogar, promoviendo hábitos positivos y sostenibles para un entorno familiar armonioso.",
-            poblacion: ['Preescolar, ', 'Básica Primaria'],
-            url: "https://www.youtube.com/watch?",
-        },
-        {
-            id: 4,
-            titulo: "Formación en el Hogar",
-            descripcion: "Guía práctica para la formación y comportamiento responsable en el hogar, promoviendo hábitos positivos y sostenibles para un entorno familiar armonioso.",
-            poblacion: ['Preescolar, ', 'Básica Primaria'],
-            url: "https://www.youtube.com/watch?",
-        },
-        {
-            id: 5,
-            titulo: "Formación en el Hogar",
-            descripcion: "Guía práctica para la formación y comportamiento responsable en el hogar, promoviendo hábitos positivos y sostenibles para un entorno familiar armonioso.",
-            poblacion: ['Preescolar, ', 'Básica Primaria'],
-            url: "https://www.youtube.com/watch?",
-        },
-    ];
-    */
-    }
 
     return (
         <div>

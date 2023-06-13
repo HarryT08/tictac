@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/herramienta")
+@RequestMapping("/herramienta")
+@CrossOrigin()
 public class HerramientaController {
 
     private final HerramientaService herramientaService;

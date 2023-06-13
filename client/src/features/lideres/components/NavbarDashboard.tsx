@@ -1,4 +1,4 @@
-import { UserMenu } from "../../../components";
+import { UserMenu } from "../components";
 
 interface SidebarDashboardProps {
   setSidebarOpen: (open: boolean) => void;

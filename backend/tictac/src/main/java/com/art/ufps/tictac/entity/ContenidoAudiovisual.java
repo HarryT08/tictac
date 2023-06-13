@@ -26,6 +26,12 @@ public class ContenidoAudiovisual implements Serializable {
     @Column(name = "docente_autor", nullable = false, length = 50)
     private String docenteAutor;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinTable(name = "recurso_contenido",
+            joinColumns = @JoinColumn(name = "id_contenido"),
+            inverseJoinColumns = @JoinColumn(name = "id_recurso"))
+    private Recurso recurso;
+
     public int getIdContenido() {
         return idContenido;
     }

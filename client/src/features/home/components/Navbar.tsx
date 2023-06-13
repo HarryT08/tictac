@@ -12,7 +12,7 @@ const Navbar = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [isValidated, setIsValidated] = useState(false);
     const token = localStorage.getItem("token");
-    const rol = localStorage.getItem("rol")
+    let rol = localStorage.getItem("rol")
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const trigger = useRef<HTMLButtonElement>(null);
     const dropdown = useRef<HTMLDivElement>(null);
@@ -41,6 +41,11 @@ const Navbar = () => {
     }
     if (isLoading && token){
         return <p>Cargando...</p>;
+    }
+    let plural = "s";
+    if (localStorage.getItem("rol") == "Lider PPT"){
+        rol = "lider";
+        plural = "es"
     }
     return (
         <nav className="bg-white">
@@ -134,7 +139,7 @@ const Navbar = () => {
                                         <li>
                                             <Link
                                                 className="font-medium hover:font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
-                                                to={"/menu-" + rol + "s"}
+                                                to={"/menu-" + rol + plural}
                                             >
                                                 Dashboard
                                             </Link>

@@ -184,7 +184,9 @@ export const FormularioLoginDirectivosProfesores = () => {
           localStorage.setItem("apellido", response.data.apellido);
           localStorage.setItem("documento", response.data.documento);
           localStorage.setItem("rol", response.data.rol)
-          if(response.status == 200) navigate("/menu-docentes");
+          if(response.status == 200 && localStorage.getItem("rol") == "Docente") navigate("/menu-docentes");
+          if(response.status == 200 && localStorage.getItem("rol") == "Lider PPT") navigate("/menu-lideres");
+          if(response.status == 200 && localStorage.getItem("rol") == "Admin") navigate("/menu-directivos");
         })
         .catch(error => {
           console.log(error);

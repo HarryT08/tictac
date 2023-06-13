@@ -42,14 +42,14 @@ public class LoginController {
             boolean isAdmin = authentication.getAuthorities().stream()
                     .anyMatch(authority -> authority.getAuthority().equals("Admin"));
             boolean isLider = authentication.getAuthorities().stream()
-                    .anyMatch(authority -> authority.getAuthority().equals("Lider"));
+                    .anyMatch(authority -> authority.getAuthority().equals("Lider PPT"));
             boolean isDocente = authentication.getAuthorities().stream()
                     .anyMatch(authority -> authority.getAuthority().equals("Docente"));
             if (isAdmin) {
                 return ResponseEntity.ok(new JWTAuthResponseDTO(token, persona.getNombre(), persona.getApellido(), persona.getCedula(), "Admin"));
             }
             else if (isLider) {
-                return ResponseEntity.ok(new JWTAuthResponseDTO(token, persona.getNombre(), persona.getApellido(), persona.getCedula(), "Lider"));
+                return ResponseEntity.ok(new JWTAuthResponseDTO(token, persona.getNombre(), persona.getApellido(), persona.getCedula(), "Lider PPT"));
             }
             else if (isDocente) {
                 return ResponseEntity.ok(new JWTAuthResponseDTO(token, persona.getNombre(), persona.getApellido(), persona.getCedula(), "Docente"));

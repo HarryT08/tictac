@@ -24,5 +24,8 @@ public class Recurso implements Serializable {
     private String tipo;
     @Basic
     @Column(name = "url", nullable = false)
-    private int url;
+    private String url;
+
+    @OneToOne(mappedBy = "recurso")
+    private ContenidoAudiovisual contenidoAudiovisual;
 }

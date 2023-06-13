@@ -1,9 +1,14 @@
-import { useEffect } from "react";
-import { Route, Routes, useLocation } from "react-router";
-import { Dashboard } from "../components/";
+import {useEffect, useState} from "react";
+import {Navigate, Route, Routes, useLocation} from "react-router";
+import { Dashboard } from "../components";
+import axios from "axios";
 
 const MenuLideres = () => {
   const location = useLocation();
+  const endpoint = "http://localhost:8081/sesion/validarToken";
+  const [isLoading, setIsLoading] = useState(true);
+  const [isValidated, setIsValidated] = useState(false);
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     const htmlElement = document.querySelector("html");
@@ -13,15 +18,39 @@ const MenuLideres = () => {
       window.scroll({ top: 0 });
       htmlElement.style.scrollBehavior = "";
     }
+    const validarToken = async () => {
+      try {
+        const response = await axios.post(endpoint, token, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        setIsValidated(response.data.estado);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    validarToken();
   }, [location.pathname]); // triggered on route change
 
-  return (
-    <>
-      <Routes>
-        <Route path="/*" element={<Dashboard />} />
-      </Routes>
-    </>
-  );
+  if (isLoading) {
+    return <p>Cargando...</p>;
+  }
+  if (isValidated && localStorage.getItem("rol") == "Lider PPT") {
+    return (
+        <>
+          <Routes>
+            <Route path="/*" element={<Dashboard/>}/>
+          </Routes>
+        </>
+    );
+  }else {
+    return <Navigate to={"/menu"} />;
+  }
 };
 
 export default MenuLideres;
