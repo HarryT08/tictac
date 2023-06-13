@@ -3,8 +3,6 @@ import { SidebarDashboard, NavbarDashboard } from "../../components";
 import { Routes, Route } from "react-router-dom";
 import { CuadroHonor } from "@/layout";
 import {
-    Estudiantes,
-    Docentes,
     ProyectoAula,
     PlanTrabajo,
     Herramientas,
@@ -50,8 +48,6 @@ const Dashboard = () => {
                                 path="/contenido-audiovisual"
                                 element={<Digitales />}
                             />
-                            <Route path="/docentes" element={<Docentes />} />
-                            <Route path="/estudiantes" element={<Estudiantes />} />
                             <Route path="/estadisticas" element={<h1>Estadisticas</h1>} />
                             <Route path="/verherramienta/:nombre" element={<VerHerramienta />} />
                             <Route path="/peticion-herramienta" element={<Peticiones />} />

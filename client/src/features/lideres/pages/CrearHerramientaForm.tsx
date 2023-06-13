@@ -1,5 +1,7 @@
-import { useState } from 'react';
+import React from 'react';
+import { useState, useEffect } from 'react';
 import { Header } from "@/components";
+import { Box, Select, MenuItem, FormControl, SelectChangeEvent, Checkbox, ListItemText, InputLabel } from '@mui/material';
 
 interface Fila {
     id: number;
@@ -8,10 +10,53 @@ interface Fila {
     tiempo: string;
 }
 
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+    PaperProps: {
+        style: {
+            maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+            width: 250,
+        },
+    },
+};
+
+const competencias = [
+    { id: 0, valor: 'Competencia #1', content: 'Participa activamente en los ámbitos sociales e interpersonales, manifestando solidaridad e interés por la comunidad' },
+    { id: 0, valor: 'Competencia #2', content: 'Capacidad de comunicarse constructivamente' },
+    { id: 0, valor: 'Competencia #3', content: 'Conoce y aplica las normas de tránsito y seguridad vial' },
+    { id: 1, valor: 'Competencia #1', content: 'Comprende los aspectos de la sexualidad humana, sus transiciones e implicaciones en la vida cotidiana' },
+    { id: 1, valor: 'Competencia #2', content: 'Identifica la diversidad que existe en los seres humanos y sus formas de expresarla' },
+    { id: 1, valor: 'Competencia #3', content: 'Toma decisiones centradas en el enfoque de derechos sexuales y reproductivos' },
+    { id: 2, valor: 'Competencia #1', content: 'Comprende los procesos de cuidado y protección del medio ambiente' },
+    { id: 2, valor: 'Competencia #2', content: 'Cuida y protege el medio ambiente' },
+    { id: 2, valor: 'Competencia #3', content: 'Promueve en su comunidad el cuidado y protección del medio ambiente' },
+    { id: 3, valor: 'Competencia #1', content: 'Desarrolla pensamiento emprendedor en el ser, sentir, pensar y actuar' },
+    { id: 3, valor: 'Competencia #2', content: 'Desarrolla hábitos y valores emprendedores que orienten el comportamiento para el éxito personal' },
+    { id: 3, valor: 'Competencia #3', content: 'Tiene capacidad para entender el entorno socioeconómico en su contexto' },
+    { id: 4, valor: 'Competencia #1', content: 'Comprende que las TIC facilitan responder a problemas de su entorno y se deben utilizar de manera responsable' },
+    { id: 4, valor: 'Competencia #2', content: 'Integra las TIC en el desarrollo de las actividades académicas y cotidianas para facilitar y agilizar los procesos operativos en los diferentes contextos' },
+    { id: 4, valor: 'Competencia #3', content: 'Construye soluciones a problemas del contexto usando las TIC' },
+];
+
 const CrearHerramientaForm = () => {
     const [objectives, setObjectives] = useState('');
-    const [competences, setCompetences] = useState('');
     const [filas, setFilas] = useState<Fila[]>([]);
+    const [eje, setEje] = React.useState('');
+    const [personName, setPersonName] = React.useState<string[]>([]);
+
+    const handleChangeCompe = (event: SelectChangeEvent<typeof personName>) => {
+        const {
+            target: { value },
+        } = event;
+        setPersonName(
+            typeof value === 'string' ? value.split(',') : value,
+        );
+    };
+
+    const handleChange = (event: SelectChangeEvent) => {
+        setEje(event.target.value as string);
+    };
 
     const agregarFila = () => {
         setFilas([...filas, { id: filas.length + 1, proceso: '', recurso: '', tiempo: '' }]);
@@ -31,29 +76,8 @@ const CrearHerramientaForm = () => {
         setFilas(nuevasFilas);
     };
 
-    const handleCompetencesChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-        setCompetences(event.target.value);
-    };
-
     const handleTextareaChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         setObjectives(event.target.value);
-    };
-
-    const handleKeyDownCompetences = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
-        if (event.key === 'Enter') {
-            event.preventDefault();
-
-            let newCompetences = competences;
-
-            if (!competences.startsWith('•')) {
-                newCompetences = '• ' + newCompetences;
-            }
-            if (!competences.endsWith('.')) {
-                newCompetences = newCompetences + '.';
-            }
-
-            setCompetences(newCompetences + '\n• ');
-        }
     };
 
     const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -143,16 +167,54 @@ const CrearHerramientaForm = () => {
                             </td>
                         </tr>
                         <tr className='border-2' style={{ borderColor: '#b1b1b1' }}>
+                            <td className='p-1 font-medium italic border-2' style={{ borderColor: '#b1b1b1' }}>Eje Transversal</td>
+                            <td>
+                                <Box sx={{ minWidth: 120, m: 1 }}>
+                                    <FormControl fullWidth>
+                                        <InputLabel id="demo-simple-select-label">Seleccione un Eje Transversal</InputLabel>
+                                        <Select
+                                            value={eje}
+                                            onChange={handleChange}
+                                            label="Seleccione un Eje Transversal"
+                                            inputProps={{ 'aria-label': 'Without label' }}
+                                        >
+                                            <MenuItem value={0}>Relaciones Sociales y Prácticas Cívicas</MenuItem>
+                                            <MenuItem value={1}>Sexualidad y Construcción de Ciudadanía</MenuItem>
+                                            <MenuItem value={2}>Educación Ambiental</MenuItem>
+                                            <MenuItem value={3}>Emprendimiento</MenuItem>
+                                            <MenuItem value={4}>Tecnologías de Información y Comunicación</MenuItem>
+                                        </Select>
+                                    </FormControl>
+                                </Box>
+                            </td>
+                        </tr>
+                        <tr className='border-2' style={{ borderColor: '#b1b1b1' }}>
                             <td className='p-1 font-medium italic border-2' style={{ borderColor: '#b1b1b1' }}>Competencias Desarrolladas</td>
                             <td>
-                                <textarea
-                                    className='font-medium'
-                                    style={{ width: '90%', height: '80px', border: '1px solid', borderRadius: '5px', marginTop: 7, padding: '5px' }}
-                                    placeholder='"Enter" para agregar otra competencia'
-                                    value={competences}
-                                    onChange={handleCompetencesChange}
-                                    onKeyDown={handleKeyDownCompetences}
-                                />
+                                <Box sx={{ minWidth: 120, m: 1 }}>
+                                    <FormControl fullWidth>
+                                    <InputLabel id="demo-simple-select-label">Seleccione las Competencias a Desarrollar</InputLabel>
+                                        <Select
+                                            labelId="demo-multiple-checkbox-label"
+                                            id="demo-multiple-checkbox"
+                                            multiple
+                                            label="Seleccione las Competencias a Desarrollar"
+                                            value={personName}
+                                            onChange={handleChangeCompe}
+                                            renderValue={(selected) => selected.join(', ')}
+                                            MenuProps={MenuProps}
+                                        >
+                                            {competencias.map((compes) => (
+                                                <MenuItem key={compes.id} value={compes.valor} style={{ display: compes.id !== Number(eje) ? 'none' : 'flex' }}>
+                                                    <Checkbox checked={personName.indexOf(compes.valor) > -1} />
+                                                    <ListItemText primaryTypographyProps={{ style: { whiteSpace: 'normal' } }}>
+                                                        {compes.content}
+                                                    </ListItemText>
+                                                </MenuItem>
+                                            ))}
+                                        </Select>
+                                    </FormControl>
+                                </Box>
                             </td>
                         </tr>
                         <tr>
@@ -179,13 +241,13 @@ const CrearHerramientaForm = () => {
                     <tbody style={{ textAlign: 'center' }}>
                         <tr>
                             <td colSpan={4}>
-                                <table style={{ margin: 'auto' }}>
+                                <table style={{ margin: 'auto', marginTop: 20 }}>
                                     <thead className='border-2' style={{ borderColor: '#b1b1b1', backgroundColor: '#e3e3e3' }}>
                                         <tr>
-                                            <th className='border-2' style={{ borderColor: '#b1b1b1' }}>Proceso</th>
-                                            <th className='border-2' style={{ borderColor: '#b1b1b1' }}>Recurso</th>
-                                            <th className='border-2' style={{ borderColor: '#b1b1b1' }}>Tiempo</th>
-                                            <th className='border-2' style={{ borderColor: '#b1b1b1' }}>Acciones</th>
+                                            <th className='border-2' style={{ borderColor: '#b1b1b1', paddingInline: 72 }}>Proceso</th>
+                                            <th className='border-2' style={{ borderColor: '#b1b1b1', paddingInline: 72 }}>Recurso</th>
+                                            <th className='border-2' style={{ borderColor: '#b1b1b1', paddingInline: 72 }}>Tiempo</th>
+                                            <th className='border-2' style={{ borderColor: '#b1b1b1', paddingInline: 72 }}>Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody className='border-2' style={{ borderColor: '#b1b1b1' }}>
@@ -267,7 +329,7 @@ const CrearHerramientaForm = () => {
                     Agregar
                 </button>
             </form>
-        </div>
+        </div >
     );
 };
 

@@ -155,15 +155,15 @@ const SidebarDashboard = ({
                 <Link
                   to="/menu-lideres/cuadro-honor"
                   className={`block text-slate-200 truncate transition duration-150 ${pathname.includes("cuadro-honor")
-                      ? "hover:text-slate-200"
-                      : "hover:text-white"
+                    ? "hover:text-slate-200"
+                    : "hover:text-white"
                     }`}
                 >
                   <div className="flex items-center">
                     <FiAward
                       className={`shrink-0 h-6 w-6 ${pathname.includes("cuadro-honor")
-                          ? "text-indigo-500"
-                          : "text-slate-400"
+                        ? "text-indigo-500"
+                        : "text-slate-400"
                         }`}
                     />
                     <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
@@ -174,88 +174,6 @@ const SidebarDashboard = ({
               </li>
 
               {/* Historicos */}
-              <SidebarLinkGroups
-                activeCondition={
-                  pathname === "/" || pathname.includes("historicos")
-                }
-              >
-                {(handleClick, open) => {
-                  return (
-                    <>
-                      <NavLink
-                        to="#0"
-                        className={`block text-slate-200 truncate transition duration-150${pathname === "/" || pathname.includes("historicos")
-                            ? "hover:text-slate-200"
-                            : "hover:text-white"
-                          }`}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          sidebarExpanded
-                            ? handleClick()
-                            : setSidebarExpanded(true);
-                        }}
-                      >
-                        <div className="flex items-center justify-between ">
-                          <div className="flex items-center">
-                            <FiFolder
-                              className={`shrink-0 h-6 w-6 ${pathname === "/" ||
-                                  pathname.includes("historicos")
-                                  ? "text-indigo-500"
-                                  : "text-slate-400"
-                                }`}
-                            />
-                            <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                              Historicos
-                            </span>
-                          </div>
-                          {/* Icon */}
-                          <div className="flex shrink-0 ml-2">
-                            <svg
-                              className={`w-3 h-3 shrink-0 ml-1 fill-current text-slate-400 ${open && "rotate-180"
-                                }`}
-                              viewBox="0 0 12 12"
-                            >
-                              <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z" />
-                            </svg>
-                          </div>
-                        </div>
-                      </NavLink>
-                      <div className="lg:hidden lg:sidebar-expanded:block 2xl:block ">
-                        <ul className={`pl-9 mt-1  ${!open && "hidden"}`}>
-                          <li className="mb-1 last:mb-0">
-                            <Link
-                              to="historicos/proyecto-aula"
-                              className={`block text-gray-400 truncate transition duration-150 ${pathname ===
-                                  "/menu-lideres/historicos/proyecto-aula"
-                                  ? "hover:text-slate-200 text-purple-300"
-                                  : "hover:text-white"
-                                }`}
-                            >
-                              <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                                Proyecto de aula
-                              </span>
-                            </Link>
-                          </li>
-                          <li className="mb-1 last:mb-0">
-                            <Link
-                              to="historicos/plan-trabajo"
-                              className={`block text-gray-400 truncate transition duration-150 ${pathname ===
-                                  "/menu-lideres/historicos/plan-trabajo"
-                                  ? "hover:text-slate-200 text-purple-300"
-                                  : "hover:text-white"
-                                }`}
-                            >
-                              <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                                Plan de trabajo
-                              </span>
-                            </Link>
-                          </li>
-                        </ul>
-                      </div>
-                    </>
-                  );
-                }}
-              </SidebarLinkGroups>
 
               {/* Contenido audiovisual */}
               <li
@@ -265,15 +183,15 @@ const SidebarDashboard = ({
                 <Link
                   to="/menu-lideres/contenido-audiovisual"
                   className={`block text-slate-200 truncate transition duration-150 ${pathname.includes("contenido-audiovisual")
-                      ? "hover:text-slate-200"
-                      : "hover:text-white"
+                    ? "hover:text-slate-200"
+                    : "hover:text-white"
                     }`}
                 >
                   <div className="flex items-center">
                     <FiGrid
                       className={`shrink-0 h-6 w-6 ${pathname.includes("contenido-audiovisual")
-                          ? "text-indigo-500"
-                          : "text-slate-400"
+                        ? "text-indigo-500"
+                        : "text-slate-400"
                         }`}
                     />
                     <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200" style={{ marginLeft: 12 }}>
@@ -320,8 +238,8 @@ const SidebarDashboard = ({
                       <NavLink
                         to="/menu-lideres/herramientas"
                         className={`block text-slate-200 truncate transition duration-150${pathname === "/" || pathname.includes("herramientas") || pathname.includes("crear-herramienta") || pathname.includes("peticion-herramienta")
-                            ? "hover:text-slate-200"
-                            : "hover:text-white"
+                          ? "hover:text-slate-200"
+                          : "hover:text-white"
                           }`}
                         onClick={(e) => {
                           e.preventDefault();
@@ -334,8 +252,8 @@ const SidebarDashboard = ({
                           <div className="flex items-center">
                             <FiTool
                               className={`shrink-0 h-6 w-6 ${pathname.includes("herramientas") || pathname.includes("crear-herramienta") || pathname.includes("peticion-herramienta")
-                                  ? "text-indigo-500"
-                                  : "text-slate-400"
+                                ? "text-indigo-500"
+                                : "text-slate-400"
                                 }`}
                             />
                             <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
@@ -360,9 +278,9 @@ const SidebarDashboard = ({
                             <Link
                               to="/menu-lideres/herramientas"
                               className={`block text-gray-400 truncate transition duration-150 ${pathname ===
-                                  "/menu-lideres/herramientas"
-                                  ? "hover:text-slate-200 text-purple-300"
-                                  : "hover:text-white"
+                                "/menu-lideres/herramientas"
+                                ? "hover:text-slate-200 text-purple-300"
+                                : "hover:text-white"
                                 }`}
                             >
                               <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
@@ -374,9 +292,9 @@ const SidebarDashboard = ({
                             <Link
                               to="/menu-lideres/crear-herramienta"
                               className={`block text-gray-400 truncate transition duration-150 ${pathname ===
-                                  "/menu-lideres/crear-herramienta"
-                                  ? "hover:text-slate-200 text-purple-300"
-                                  : "hover:text-white"
+                                "/menu-lideres/crear-herramienta"
+                                ? "hover:text-slate-200 text-purple-300"
+                                : "hover:text-white"
                                 }`}
                             >
                               <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
@@ -388,9 +306,9 @@ const SidebarDashboard = ({
                             <Link
                               to="/menu-lideres/peticion-herramienta"
                               className={`block text-gray-400 truncate transition duration-150 ${pathname ===
-                                  "/menu-lideres/peticion-herramienta"
-                                  ? "hover:text-slate-200 text-purple-300"
-                                  : "hover:text-white"
+                                "/menu-lideres/peticion-herramienta"
+                                ? "hover:text-slate-200 text-purple-300"
+                                : "hover:text-white"
                                 }`}
                             >
                               <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
@@ -406,7 +324,7 @@ const SidebarDashboard = ({
               </SidebarLinkGroups>
 
               {/* Docentes*/}
-              <li
+              {/* <li
                 className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${pathname.includes("docentes") && "bg-slate-900"
                   }`}
               >
@@ -429,10 +347,10 @@ const SidebarDashboard = ({
                     </span>
                   </div>
                 </Link>
-              </li>
+              </li> */}
 
               {/* Estudiantes */}
-              <li
+              {/* <li
                 className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${pathname.includes("estudiantes") && "bg-slate-900"
                   }`}
               >
@@ -456,7 +374,7 @@ const SidebarDashboard = ({
                     </span>
                   </div>
                 </NavLink>
-              </li>
+              </li> */}
 
               {/* Estadisticas */}
               <li
@@ -466,15 +384,15 @@ const SidebarDashboard = ({
                 <Link
                   to="/menu-lideres/estadisticas"
                   className={`block text-slate-200 truncate transition duration-150 ${pathname.includes("estadisticas")
-                      ? "hover:text-slate-200"
-                      : "hover:text-white"
+                    ? "hover:text-slate-200"
+                    : "hover:text-white"
                     }`}
                 >
                   <div className="flex items-center">
                     <FiBarChart2
                       className={`shrink-0 h-6 w-6 ${pathname.includes("estadisticas")
-                          ? "text-indigo-500"
-                          : "text-slate-400"
+                        ? "text-indigo-500"
+                        : "text-slate-400"
                         }`}
                     />
                     {/* <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
