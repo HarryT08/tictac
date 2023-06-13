@@ -4,6 +4,7 @@ import AddIcon from '@mui/icons-material/Add';
 import {Modal, Box, Card, CardContent, Typography} from '@mui/material';
 import {styled} from '@mui/material/styles';
 import axios from "axios";
+import CircularProgress from '@mui/material/CircularProgress';
 
 const Digitales = () => {
     const [open, setOpen] = React.useState(false);
@@ -190,7 +191,7 @@ const Digitales = () => {
                 <div className="mt-4" >
                     <div>
                         {isLoading ? (
-                            <p>Cargando datos...</p>
+                            <CircularProgress />
                         ) : (
                             rows.length == 0 ? (
                                 <p>No se encontraron herramientas...</p>
@@ -236,7 +237,7 @@ const Digitales = () => {
                 {/*
                 <div>
                     {isLoading ? (
-                        <p>Cargando datos...</p>
+                        <CircularProgress />
                     ) : (
                         <div style={{
                             display: 'flex',

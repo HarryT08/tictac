@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import {Navigate, Route, Routes, useLocation} from "react-router";
 import { Dashboard } from "../components";
 import axios from "axios";
+import CircularProgress from '@mui/material/CircularProgress';
 
 const MenuLideres = () => {
   const location = useLocation();
@@ -38,7 +39,7 @@ const MenuLideres = () => {
   }, [location.pathname]); // triggered on route change
 
   if (isLoading) {
-    return <p>Cargando...</p>;
+    return <CircularProgress />;
   }
   if (isValidated && localStorage.getItem("rol") == "Lider PPT") {
     return (

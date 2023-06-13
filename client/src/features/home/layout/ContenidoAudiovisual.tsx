@@ -2,7 +2,7 @@ import { Header } from "@/features/home/components";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {styled} from "@mui/material/styles";
-import {Card, CardContent, Typography} from "@mui/material";
+import {Card, CardContent, Typography, CircularProgress} from "@mui/material";
 
 const ContenidoAudiovisual = () => {
   const tabsData = [
@@ -101,7 +101,7 @@ const ContenidoAudiovisual = () => {
       <div className="mt-4">
         <div>
           {isLoading ? (
-              <p>Cargando datos...</p>
+              <CircularProgress />
           ) : (
               rows.length == 0 ? (
                   <p>No se encontraron herramientas...</p>

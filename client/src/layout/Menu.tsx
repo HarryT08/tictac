@@ -8,6 +8,7 @@ import NavigationIcon from '@mui/icons-material/Navigation';
 import { Fab } from '@mui/material';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import CircularProgress from '@mui/material/CircularProgress';
 
 const Menu = () => {
   const [openModal, setOpenModal] = useState<boolean>(false);
@@ -54,7 +55,7 @@ const Menu = () => {
   }
 
   if (isLoading && token) {
-    return <p>Cargando...</p>;
+    return <CircularProgress />;
   }
   if(isValidated){
     navigate("/")

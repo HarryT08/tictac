@@ -4,6 +4,7 @@ import ReactPaginate from "react-paginate";
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
 import axios from "axios";
+import CircularProgress from '@mui/material/CircularProgress';
 
 const columns = [
   { id: "documento", label: "Documento" },
@@ -127,7 +128,7 @@ const TableEstudiantes =  ({ grado, anoLectivo }) => {
   const currentItems = rows.slice(indexOfFirstItem, indexOfLastItem);
 
   if (isLoading) {
-    return <p>Cargando...</p>;
+    return <CircularProgress />;
   }
   if (rows.length == 0){
     return <p>No se encontraron registros</p>;

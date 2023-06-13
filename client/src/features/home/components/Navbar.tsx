@@ -1,10 +1,11 @@
-import {useRef, useState} from "react";
-import {Link} from "react-router-dom";
-import {NavLinks} from "@/features/home/components";
-import {FiAlignRight, FiXCircle, FiLogIn} from "react-icons/fi";
+import { useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import { NavLinks } from "@/features/home/components";
+import { FiAlignRight, FiXCircle, FiLogIn } from "react-icons/fi";
+import { Skeleton, Box } from '@mui/material';
 import logo from "../../../../public/images/Titalogo.png";
 import axios from "axios";
-import {Transition} from "@/utils";
+import { Transition } from "@/utils";
 
 const Navbar = () => {
     const [open, setOpen] = useState(false);
@@ -39,51 +40,41 @@ const Navbar = () => {
     if (localStorage.getItem("token")) {
         validarToken();
     }
-    if (isLoading && token){
-        return <p>Cargando...</p>;
+    if (isLoading && token) {
+        return <Box sx={{ display: "flex", justifyContent: "center", alignItems: 'center', padding: 2.5 }}>
+            <Skeleton variant="circular" width={100} height={100} sx={{ marginRight: 40 }}/>
+            <Skeleton width={60} height={40} sx={{ marginInline: 5 }} />
+            <Skeleton width={60} height={40} sx={{ marginInline: 5 }} />
+            <Skeleton width={60} height={40} sx={{ marginInline: 5 }} />
+            <Skeleton width={60} height={40} sx={{ marginInline: 5 }} />
+            <Skeleton width={60} height={40} sx={{ marginInline: 5 }} />
+        </Box>;
     }
     let plural = "s";
-    if (localStorage.getItem("rol") == "Lider PPT"){
+    if (localStorage.getItem("rol") == "Lider PPT") {
         rol = "lider";
         plural = "es"
     }
-    else if(localStorage.getItem("rol") == "Admin"){
+    else if (localStorage.getItem("rol") == "Admin") {
         rol = "directivo";
     }
     return (
         <nav className="bg-white">
             <div className="flex items-center font-medium justify-around">
                 <div className="z-50 p-5 md:w-auto w-full flex justify-between">
-                    <img src={logo} alt="logo" className="md:cursor-pointer" width={150}/>
+                    <img src={logo} alt="logo" className="md:cursor-pointer" width={150} />
                     <div
                         className="text-3xl md:hidden text-azul-50"
                         onClick={() => setOpen(!open)}
                     >
-                        {open ? <FiXCircle/> : <FiAlignRight/>}
+                        {open ? <FiXCircle /> : <FiAlignRight />}
                     </div>
                 </div>
                 <ul className="md:flex hidden items-center gap-8">
-                    <NavLinks setOpen={setOpen} open={open}/>
+                    <NavLinks setOpen={setOpen} open={open} />
                 </ul>
-                {/*<Link to="/menu" className="md:block hidden border-none">
-                    <button
-                        className="flex items-center font-medium gap-2 hover:text-azul-50 transition duration-300 text-sm md:text-base">
-                        <FiLogIn className="text-azul-50"/>
-                        Iniciar sesión
-                    </button>
-                </Link>*/}
-                {/* Mobile nav */}
                 <ul className={`md:hidden bg-white fixed w-full top-0 overflow-y-auto bottom-0 py-24 duration-500 z-10 ${open ? "left-0" : "left-[-100%]"}`}>
-                    <NavLinks setOpen={setOpen} open={open}/>
-                    {/*<Link to="/menu" className="py-5 border-none">
-                        <button
-                            type="button"
-                            className="m-auto flex items-center justify-center font-medium gap-2 transition duration-300 hover:text-azul-50"
-                        >
-                            <FiLogIn className="text-azul-50"/>
-                            Iniciar sesión
-                        </button>
-                    </Link>*/}
+                    <NavLinks setOpen={setOpen} open={open} />
                 </ul>
                 <ul>
                     {isValidated ? (
@@ -110,7 +101,7 @@ const Navbar = () => {
                                         className="w-3 h-3 shrink-0 ml-1 fill-current text-slate-400"
                                         viewBox="0 0 12 12"
                                     >
-                                        <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z"/>
+                                        <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z" />
                                     </svg>
                                 </div>
                             </button>
@@ -166,7 +157,7 @@ const Navbar = () => {
                                 type="button"
                                 className="m-auto flex items-center justify-center font-medium gap-2 transition duration-300 hover:text-azul-50"
                             >
-                                <FiLogIn className="text-azul-50"/>
+                                <FiLogIn className="text-azul-50" />
                                 Iniciar sesión
                             </button>
                         </Link>

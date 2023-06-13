@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Route, Routes, useLocation, Navigate } from "react-router";
+import CircularProgress from '@mui/material/CircularProgress';
 import { Dashboard } from "../components";
 import axios from "axios";
 
@@ -38,7 +39,7 @@ const MenuEstudiantes = () => {
     }, [location.pathname]);
 
     if (isLoading) {
-        return <p>Cargando...</p>;
+        return <CircularProgress />;
     }
 
     if (isValidated && localStorage.getItem("rol") == "Estudiante") {

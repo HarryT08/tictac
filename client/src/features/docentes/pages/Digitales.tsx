@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Header} from "@/components";
 import AddIcon from '@mui/icons-material/Add';
-import {Modal, Box, Card, CardContent, Typography} from '@mui/material';
+import {Modal, Box, Card, CardContent, Typography, CircularProgress} from '@mui/material';
 import {styled} from '@mui/material/styles';
 import axios from "axios";
 
@@ -190,7 +190,7 @@ const Digitales = () => {
                 <div className="mt-4" >
                     <div>
                         {isLoading ? (
-                            <p>Cargando datos...</p>
+                            <CircularProgress />
                         ) : (
                             rows.length == 0 ? (
                                 <p>No se encontraron herramientas...</p>
@@ -236,7 +236,7 @@ const Digitales = () => {
                 {/*
                 <div>
                     {isLoading ? (
-                        <p>Cargando datos...</p>
+                        <CircularProgress />
                     ) : (
                         <div style={{
                             display: 'flex',

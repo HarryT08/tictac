@@ -1,7 +1,8 @@
-import {useEffect, useState} from "react";
-import {Navigate, Route, Routes, useLocation} from "react-router";
+import { useEffect, useState } from "react";
+import { Navigate, Route, Routes, useLocation } from "react-router";
 import { Dashboard } from "@/components";
 import axios from "axios";
+import CircularProgress from '@mui/material/CircularProgress';
 
 const MenuDirectivos = () => {
   const location = useLocation();
@@ -39,17 +40,17 @@ const MenuDirectivos = () => {
   }, [location.pathname]); // triggered on route change
 
   if (isLoading) {
-    return <p>Cargando...</p>;
+    return <CircularProgress />;
   }
   if (isValidated && localStorage.getItem("rol") == "Admin") {
     return (
-        <>
-          <Routes>
-            <Route path="/*" element={<Dashboard/>}/>
-          </Routes>
-        </>
+      <>
+        <Routes>
+          <Route path="/*" element={<Dashboard />} />
+        </Routes>
+      </>
     );
-  }else {
+  } else {
     return <Navigate to={"/menu"} />;
   }
 };

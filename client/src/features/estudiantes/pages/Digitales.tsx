@@ -3,6 +3,7 @@ import {Header} from "@/components";
 import {Card, CardContent, Typography} from '@mui/material';
 import {styled} from '@mui/material/styles';
 import axios from "axios";
+import CircularProgress from '@mui/material/CircularProgress';
 
 const Digitales = () => {
     const [activeTab, setActiveTab] = useState(0);
@@ -99,7 +100,7 @@ const Digitales = () => {
                 <div className="mt-4">
                     <div>
                         {isLoading ? (
-                            <p>Cargando datos...</p>
+                            <CircularProgress />
                         ) : (
                             rows.length == 0 ? (
                                 <p>No se encontraron herramientas...</p>

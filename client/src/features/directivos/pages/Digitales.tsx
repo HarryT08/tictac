@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Header} from "@/components";
-import {Card, CardContent, Typography} from '@mui/material';
+import {Card, CardContent, Typography, CircularProgress} from '@mui/material';
 import {styled} from '@mui/material/styles';
 import axios from "axios";
 
@@ -99,7 +99,7 @@ const Digitales = () => {
                 <div className="mt-4">
                     <div>
                         {isLoading ? (
-                            <p>Cargando datos...</p>
+                            <CircularProgress />
                         ) : (
                             rows.length == 0 ? (
                                 <p>No se encontraron herramientas...</p>
