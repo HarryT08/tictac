@@ -6,11 +6,11 @@ import {
   ProyectoAula,
   PlanTrabajo,
   Herramientas,
-  VerHerramienta,
 } from "@/features/directivos/pages";
 import {
   Digitales
 } from "@/features/docentes/pages";
+import {CrearHerramientaForm, VerHerramienta} from "@/features/lideres/pages";
 
 const Dashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
@@ -36,6 +36,8 @@ const Dashboard = () => {
               <Route path="/" element={<h1>Cuadro honor</h1>} />
               <Route path="/cuadro-honor" element={<h1>Cuadro honor</h1>} />
               <Route path="/herramientas" element={<Herramientas />} />
+              <Route path="/crear-herramienta" element={<CrearHerramientaForm />} />
+              <Route path="/verherramienta/:nombre" element={<VerHerramienta />} />
               <Route path="/contenido-audiovisual" element={<Digitales />} />
               <Route path="/mis-proyectos" element={<h1>Mis proyectos</h1>} />
               <Route path="/mi-plan-trabajo" element={<h1>Mi plan de trabajo</h1>} />

@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { NavLink, useLocation, Link } from "react-router-dom";
 import {FiAward, FiFolder, FiBarChart2, FiTool, FiGrid, FiBriefcase, FiStar} from "react-icons/fi";
 import logo from "../../../../../public/images/TicTac.png";
+import {SidebarLinkGroups} from "@/features/lideres/components";
 
 interface SidebarDashboardProps {
   setSidebarOpen: (open: boolean) => void;
@@ -208,6 +209,7 @@ const SidebarDashboard = ({
               </li>
 
               {/* Herramientas*/}
+              {/*
               <li
                   className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${
                       pathname.includes("herramientas") && "bg-slate-900"
@@ -235,6 +237,89 @@ const SidebarDashboard = ({
                   </div>
                 </Link>
               </li>
+              */}
+
+              <SidebarLinkGroups
+                  activeCondition={
+                      pathname === "/" || pathname.includes("herramientas") || pathname.includes("crear-herramienta") || pathname.includes("peticion-herramienta")
+                  }
+              >
+                {(handleClick, open) => {
+                  return (
+                      <>
+                        <NavLink
+                            to="/menu-docentes/herramientas"
+                            className={`block text-slate-200 truncate transition duration-150${pathname === "/" || pathname.includes("herramientas") || pathname.includes("crear-herramienta") || pathname.includes("peticion-herramienta")
+                                ? "hover:text-slate-200"
+                                : "hover:text-white"
+                            }`}
+                            onClick={(e) => {
+                              e.preventDefault();
+                              sidebarExpanded
+                                  ? handleClick()
+                                  : setSidebarExpanded(true);
+                            }}
+                        >
+                          <div className="flex items-center justify-between ">
+                            <div className="flex items-center">
+                              <FiTool
+                                  className={`shrink-0 h-6 w-6 ${pathname.includes("herramientas") || pathname.includes("crear-herramienta") || pathname.includes("peticion-herramienta")
+                                      ? "text-indigo-500"
+                                      : "text-slate-400"
+                                  }`}
+                              />
+                              <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                              Herramientas
+                            </span>
+                            </div>
+                            {/* Icon */}
+                            <div className="flex shrink-0 ml-2">
+                              <svg
+                                  className={`w-3 h-3 shrink-0 ml-1 fill-current text-slate-400 ${open && "rotate-180"
+                                  }`}
+                                  viewBox="0 0 12 12"
+                              >
+                                <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z" />
+                              </svg>
+                            </div>
+                          </div>
+                        </NavLink>
+                        <div className="lg:hidden lg:sidebar-expanded:block 2xl:block ">
+                          <ul className={`pl-9 mt-1  ${!open && "hidden"}`}>
+                            <li className="mb-1 last:mb-0">
+                              <Link
+                                  to="/menu-docentes/herramientas"
+                                  className={`block text-gray-400 truncate transition duration-150 ${pathname ===
+                                  "/menu-docentes/herramientas"
+                                      ? "hover:text-slate-200 text-purple-300"
+                                      : "hover:text-white"
+                                  }`}
+                              >
+                              <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                                Ver Listado
+                              </span>
+                              </Link>
+                            </li>
+                            <li className="mb-1 last:mb-0">
+                              <Link
+                                  to="/menu-docentes/crear-herramienta"
+                                  className={`block text-gray-400 truncate transition duration-150 ${pathname ===
+                                  "/menu-docentes/crear-herramienta"
+                                      ? "hover:text-slate-200 text-purple-300"
+                                      : "hover:text-white"
+                                  }`}
+                              >
+                              <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                                Crear Herramienta
+                              </span>
+                              </Link>
+                            </li>
+                          </ul>
+                        </div>
+                      </>
+                  );
+                }}
+              </SidebarLinkGroups>
 
               {/* Proyectos del docente */}
               <li

@@ -47,4 +47,6 @@ public class Herramienta implements Serializable {
     @Basic
     @Column(name = "fecha_creacion", nullable = false)
     private Date fechaCreacion;
+    //@OneToOne(mappedBy = "herramienta")
+    //private Tema tema;
 }

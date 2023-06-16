@@ -24,4 +24,7 @@ public class Tema implements Serializable {
     @Basic
     @Column(name = "id_competencia", nullable = false)
     private int idCompetencia;
+    //@OneToOne(cascade = CascadeType.ALL)
+    //@JoinColumn(name = "id_tema")
+    //private Herramienta herramienta;
 }

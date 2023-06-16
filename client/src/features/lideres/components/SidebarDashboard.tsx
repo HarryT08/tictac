@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { NavLink, useLocation, Link } from "react-router-dom";
 import { SidebarLinkGroups } from "../components";
-import {FiAward, FiFolder, FiBarChart2, FiUsers, FiTool, FiGrid, FiStar} from "react-icons/fi";
+import {FiAward, FiFolder, FiBarChart2, FiUsers, FiTool, FiGrid, FiStar, FiBriefcase} from "react-icons/fi";
 import logo from "../../../../public/images/TicTac.png";
 
 interface SidebarDashboardProps {
@@ -322,6 +322,65 @@ const SidebarDashboard = ({
                   );
                 }}
               </SidebarLinkGroups>
+
+              {/* Proyectos del docente */}
+              <li
+                  className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${
+                      pathname.includes("mis-proyectos") && "bg-slate-900"
+                  }`}
+              >
+                <Link
+                    to="/menu-lideres/mis-proyectos"
+                    className={`block text-slate-200 truncate transition duration-150 ${
+                        pathname.includes("mis-proyectos")
+                            ? "hover:text-slate-200"
+                            : "hover:text-white"
+                    }`}
+                >
+                  <div className="flex items-center">
+                    <FiFolder
+                        className={`shrink-0 h-6 w-6 ${
+                            pathname.includes("mis-proyectos")
+                                ? "text-indigo-500"
+                                : "text-slate-400"
+                        }`}
+                    />
+                    <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                      Mis proyectos
+                    </span>
+                  </div>
+                </Link>
+              </li>
+
+              {/* Planes de trabajo del docente */}
+              <li
+                  className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${
+                      pathname.includes("mi-plan-trabajo") && "bg-slate-900"
+                  }`}
+              >
+                <NavLink
+                    end
+                    to="/menu-lideres/mi-plan-trabajo"
+                    className={`block text-slate-200 truncate transition duration-150 ${
+                        pathname.includes("mi-plan-trabajo")
+                            ? "hover:text-slate-200"
+                            : "hover:text-white"
+                    }`}
+                >
+                  <div className="flex items-center">
+                    <FiBriefcase
+                        className={`shrink-0 h-6 w-6 ${
+                            pathname.includes("mi-plan-trabajo")
+                                ? "text-indigo-500"
+                                : "text-slate-400"
+                        }`}
+                    />
+                    <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                      Mi plan de trabajo
+                    </span>
+                  </div>
+                </NavLink>
+              </li>
 
               {/* Docentes*/}
               {/* <li
